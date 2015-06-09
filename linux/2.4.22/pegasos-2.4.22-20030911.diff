@@ -1,0 +1,2266 @@
+diff -urN linux-2.4.22-ppc/arch/ppc/defconfig linux-2.4.22-pegasos/arch/ppc/defconfig
+--- linux-2.4.22-ppc/arch/ppc/defconfig	2003-08-26 15:15:31.000000000 +0200
++++ linux-2.4.22-pegasos/arch/ppc/defconfig	2003-09-11 13:54:31.000000000 +0200
+@@ -1,3 +1,4 @@
++
+ #
+ # Automatically generated make config: don't edit
+ #
+@@ -24,7 +25,7 @@
+ CONFIG_PPC=y
+ CONFIG_PPC32=y
+ CONFIG_6xx=y
+-# CONFIG_4xx is not set
++# CONFIG_40x is not set
+ # CONFIG_POWER3 is not set
+ # CONFIG_POWER4 is not set
+ # CONFIG_8xx is not set
+@@ -34,6 +35,7 @@
+ # CONFIG_APUS is not set
+ # CONFIG_SPRUCE is not set
+ # CONFIG_LOPEC is not set
++# CONFIG_PPLUS is not set
+ # CONFIG_PAL4 is not set
+ # CONFIG_GEMINI is not set
+ # CONFIG_SMP is not set
+@@ -59,28 +61,35 @@
+ CONFIG_KCORE_ELF=y
+ CONFIG_BINFMT_ELF=y
+ CONFIG_KERNEL_ELF=y
+-CONFIG_BINFMT_MISC=m
++CONFIG_BINFMT_MISC=y
+ CONFIG_PCI_NAMES=y
+-CONFIG_HOTPLUG=y
+-
+-#
+-# PCMCIA/CardBus support
+-#
++# CONFIG_HOTPLUG is not set
+ # CONFIG_PCMCIA is not set
+ 
+ #
+ # Parallel port support
+ #
+-# CONFIG_PARPORT is not set
++CONFIG_PARPORT=m
++CONFIG_PARPORT_PC=m
++CONFIG_PARPORT_PC_CML1=m
++# CONFIG_PARPORT_SERIAL is not set
++CONFIG_PARPORT_PC_FIFO=y
++CONFIG_PARPORT_PC_SUPERIO=y
++# CONFIG_PARPORT_AMIGA is not set
++# CONFIG_PARPORT_MFC3 is not set
++# CONFIG_PARPORT_ATARI is not set
++# CONFIG_PARPORT_GSC is not set
++# CONFIG_PARPORT_SUNBPP is not set
++CONFIG_PARPORT_OTHER=y
++CONFIG_PARPORT_1284=y
+ CONFIG_GEN_RTC=y
+-CONFIG_PPC601_SYNC_FIX=y
++# CONFIG_PPC601_SYNC_FIX is not set
+ CONFIG_PROC_DEVICETREE=y
+-CONFIG_PPC_RTAS=y
+-CONFIG_PREP_RESIDUAL=y
+-CONFIG_PROC_PREPRESIDUAL=y
++# CONFIG_PPC_RTAS is not set
++# CONFIG_PREP_RESIDUAL is not set
++# CONFIG_PROC_PREPRESIDUAL is not set
+ CONFIG_PPCBUG_NVRAM=y
+-CONFIG_CMDLINE_BOOL=y
+-CONFIG_CMDLINE="console=ttyS0,9600 console=tty0 root=/dev/sda2"
++# CONFIG_CMDLINE_BOOL is not set
+ 
+ #
+ # Memory Technology Devices (MTD)
+@@ -96,7 +105,7 @@
+ #
+ # Block devices
+ #
+-CONFIG_BLK_DEV_FD=m
++CONFIG_BLK_DEV_FD=y
+ # CONFIG_BLK_DEV_XD is not set
+ # CONFIG_PARIDE is not set
+ # CONFIG_BLK_CPQ_DA is not set
+@@ -107,9 +116,9 @@
+ CONFIG_BLK_DEV_LOOP=y
+ # CONFIG_BLK_DEV_NBD is not set
+ CONFIG_BLK_DEV_RAM=y
+-CONFIG_BLK_DEV_RAM_SIZE=4096
++CONFIG_BLK_DEV_RAM_SIZE=8192
+ CONFIG_BLK_DEV_INITRD=y
+-# CONFIG_BLK_STATS is not set
++CONFIG_BLK_STATS=y
+ 
+ #
+ # Multi-device support (RAID and LVM)
+@@ -131,7 +140,7 @@
+ # CONFIG_NETLINK_DEV is not set
+ CONFIG_NETFILTER=y
+ # CONFIG_NETFILTER_DEBUG is not set
+-# CONFIG_FILTER is not set
++CONFIG_FILTER=y
+ CONFIG_UNIX=y
+ CONFIG_INET=y
+ CONFIG_IP_MULTICAST=y
+@@ -156,10 +165,11 @@
+ CONFIG_IP_NF_IPTABLES=m
+ CONFIG_IP_NF_MATCH_LIMIT=m
+ CONFIG_IP_NF_MATCH_MAC=m
+-CONFIG_IP_NF_MATCH_PKTTYPE=m
++# CONFIG_IP_NF_MATCH_PKTTYPE is not set
+ CONFIG_IP_NF_MATCH_MARK=m
+ CONFIG_IP_NF_MATCH_MULTIPORT=m
+ CONFIG_IP_NF_MATCH_TOS=m
++CONFIG_IP_NF_MATCH_RECENT=m
+ CONFIG_IP_NF_MATCH_ECN=m
+ CONFIG_IP_NF_MATCH_DSCP=m
+ CONFIG_IP_NF_MATCH_AH_ESP=m
+@@ -186,10 +196,9 @@
+ CONFIG_IP_NF_NAT_TFTP=m
+ # CONFIG_IP_NF_MANGLE is not set
+ # CONFIG_IP_NF_TARGET_LOG is not set
+-CONFIG_IP_NF_TARGET_ULOG=m
++# CONFIG_IP_NF_TARGET_ULOG is not set
+ CONFIG_IP_NF_TARGET_TCPMSS=m
+-CONFIG_IP_NF_ARPTABLES=m
+-CONFIG_IP_NF_ARPFILTER=m
++# CONFIG_IP_NF_ARPTABLES is not set
+ CONFIG_IP_NF_COMPAT_IPCHAINS=m
+ CONFIG_IP_NF_NAT_NEEDED=y
+ # CONFIG_IP_NF_COMPAT_IPFWADM is not set
+@@ -202,7 +211,7 @@
+ #  
+ #
+ # CONFIG_IPX is not set
+-CONFIG_ATALK=m
++# CONFIG_ATALK is not set
+ 
+ #
+ # Appletalk devices
+@@ -250,7 +259,7 @@
+ # CONFIG_BLK_DEV_IDECS is not set
+ CONFIG_BLK_DEV_IDECD=y
+ # CONFIG_BLK_DEV_IDETAPE is not set
+-CONFIG_BLK_DEV_IDEFLOPPY=y
++# CONFIG_BLK_DEV_IDEFLOPPY is not set
+ CONFIG_BLK_DEV_IDESCSI=y
+ # CONFIG_IDE_TASK_IOCTL is not set
+ 
+@@ -261,7 +270,7 @@
+ # CONFIG_BLK_DEV_CMD640_ENHANCED is not set
+ # CONFIG_BLK_DEV_ISAPNP is not set
+ CONFIG_BLK_DEV_IDEPCI=y
+-CONFIG_BLK_DEV_GENERIC=y
++# CONFIG_BLK_DEV_GENERIC is not set
+ CONFIG_IDEPCI_SHARE_IRQ=y
+ CONFIG_BLK_DEV_IDEDMA_PCI=y
+ # CONFIG_BLK_DEV_OFFBOARD is not set
+@@ -276,7 +285,7 @@
+ # CONFIG_WDC_ALI15X3 is not set
+ # CONFIG_BLK_DEV_AMD74XX is not set
+ # CONFIG_AMD74XX_OVERRIDE is not set
+-CONFIG_BLK_DEV_CMD64X=y
++# CONFIG_BLK_DEV_CMD64X is not set
+ # CONFIG_BLK_DEV_TRIFLEX is not set
+ # CONFIG_BLK_DEV_CY82C693 is not set
+ # CONFIG_BLK_DEV_CS5530 is not set
+@@ -289,7 +298,6 @@
+ # CONFIG_BLK_DEV_PDC202XX_OLD is not set
+ # CONFIG_PDC202XX_BURST is not set
+ # CONFIG_BLK_DEV_PDC202XX_NEW is not set
+-# CONFIG_PDC202XX_FORCE is not set
+ # CONFIG_BLK_DEV_RZ1000 is not set
+ # CONFIG_BLK_DEV_SC1200 is not set
+ # CONFIG_BLK_DEV_SVWKS is not set
+@@ -297,13 +305,12 @@
+ # CONFIG_BLK_DEV_SIS5513 is not set
+ # CONFIG_BLK_DEV_SLC90E66 is not set
+ # CONFIG_BLK_DEV_TRM290 is not set
+-# CONFIG_BLK_DEV_VIA82CXXX is not set
+-CONFIG_BLK_DEV_SL82C105=y
+-CONFIG_BLK_DEV_IDE_PMAC=y
+-CONFIG_BLK_DEV_IDEDMA_PMAC=y
+-CONFIG_BLK_DEV_IDEDMA_PMAC_AUTO=y
+-CONFIG_BLK_DEV_IDEDMA=y
+-CONFIG_BLK_DEV_IDEPCI=y
++CONFIG_BLK_DEV_VIA82CXXX=y
++# CONFIG_BLK_DEV_SL82C105 is not set
++# CONFIG_BLK_DEV_IDE_PMAC is not set
++# CONFIG_BLK_DEV_IDE_PMAC_ATA100FIRST is not set
++# CONFIG_BLK_DEV_IDEDMA_PMAC is not set
++# CONFIG_BLK_DEV_IDEDMA_PMAC_AUTO is not set
+ # CONFIG_IDE_CHIPSETS is not set
+ CONFIG_IDEDMA_AUTO=y
+ # CONFIG_IDEDMA_IVB is not set
+@@ -324,7 +331,7 @@
+ #
+ CONFIG_BLK_DEV_SD=y
+ CONFIG_SD_EXTRA_DEVS=40
+-CONFIG_CHR_DEV_ST=y
++# CONFIG_CHR_DEV_ST is not set
+ # CONFIG_CHR_DEV_OSST is not set
+ CONFIG_BLK_DEV_SR=y
+ CONFIG_BLK_DEV_SR_VENDOR=y
+@@ -349,21 +356,11 @@
+ # CONFIG_SCSI_AHA1542 is not set
+ # CONFIG_SCSI_AHA1740 is not set
+ # CONFIG_SCSI_AACRAID is not set
+-CONFIG_SCSI_AIC7XXX=m
+-CONFIG_AIC7XXX_CMDS_PER_DEVICE=253
+-CONFIG_AIC7XXX_RESET_DELAY_MS=15000
+-# CONFIG_AIC7XXX_PROBE_EISA_VL is not set
+-# CONFIG_AIC7XXX_BUILD_FIRMWARE is not set
+-# CONFIG_AIC7XXX_DEBUG_ENABLE is not set
+-CONFIG_AIC7XXX_DEBUG_MASK=0
+-# CONFIG_AIC7XXX_REG_PRETTY_PRINT is not set
++# CONFIG_SCSI_AIC7XXX is not set
+ # CONFIG_SCSI_AIC79XX is not set
+-CONFIG_SCSI_AIC7XXX_OLD=m
+-# CONFIG_AIC7XXX_OLD_TCQ_ON_BY_DEFAULT is not set
+-CONFIG_AIC7XXX_OLD_CMDS_PER_DEVICE=8
+-CONFIG_AIC7XXX_OLD_PROC_STATS=y
++# CONFIG_SCSI_AIC7XXX_OLD is not set
+ # CONFIG_SCSI_DPT_I2O is not set
+-CONFIG_SCSI_ADVANSYS=m
++# CONFIG_SCSI_ADVANSYS is not set
+ # CONFIG_SCSI_IN2000 is not set
+ # CONFIG_SCSI_AM53C974 is not set
+ # CONFIG_SCSI_MEGARAID is not set
+@@ -379,6 +376,8 @@
+ # CONFIG_SCSI_GENERIC_NCR5380 is not set
+ # CONFIG_SCSI_INITIO is not set
+ # CONFIG_SCSI_INIA100 is not set
++# CONFIG_SCSI_PPA is not set
++# CONFIG_SCSI_IMM is not set
+ # CONFIG_SCSI_NCR53C406A is not set
+ # CONFIG_SCSI_NCR53C7xx is not set
+ CONFIG_SCSI_SYM53C8XX_2=y
+@@ -401,15 +400,33 @@
+ # CONFIG_SCSI_U14_34F is not set
+ # CONFIG_SCSI_NSP32 is not set
+ # CONFIG_SCSI_DEBUG is not set
+-CONFIG_SCSI_MESH=y
+-CONFIG_SCSI_MESH_SYNC_RATE=5
+-CONFIG_SCSI_MESH_RESET_DELAY_MS=4000
+-CONFIG_SCSI_MAC53C94=y
++# CONFIG_SCSI_MESH is not set
++# CONFIG_SCSI_MAC53C94 is not set
+ 
+ #
+ # IEEE 1394 (FireWire) support (EXPERIMENTAL)
+ #
+-# CONFIG_IEEE1394 is not set
++CONFIG_IEEE1394=m
++
++#
++# Device Drivers
++#
++# CONFIG_IEEE1394_PCILYNX is not set
++CONFIG_IEEE1394_OHCI1394=m
++
++#
++# Protocol Drivers
++#
++CONFIG_IEEE1394_VIDEO1394=m
++CONFIG_IEEE1394_SBP2=m
++# CONFIG_IEEE1394_SBP2_PHYS_DMA is not set
++CONFIG_IEEE1394_ETH1394=m
++CONFIG_IEEE1394_DV1394=m
++CONFIG_IEEE1394_RAWIO=m
++CONFIG_IEEE1394_CMP=m
++CONFIG_IEEE1394_AMDTP=m
++# CONFIG_IEEE1394_VERBOSEDEBUG is not set
++# CONFIG_IEEE1394_OUI_DB is not set
+ 
+ #
+ # Network device support
+@@ -423,17 +440,16 @@
+ # CONFIG_DUMMY is not set
+ # CONFIG_BONDING is not set
+ # CONFIG_EQUALIZER is not set
+-# CONFIG_TUN is not set
+-# CONFIG_ETHERTAP is not set
++CONFIG_TUN=y
++CONFIG_ETHERTAP=y
+ 
+ #
+ # Ethernet (10 or 100Mbit)
+ #
+ CONFIG_NET_ETHERNET=y
+-CONFIG_MACE=y
+-# CONFIG_MACE_AAUI_PORT is not set
+-CONFIG_BMAC=y
+-CONFIG_GMAC=y
++# CONFIG_MACE is not set
++# CONFIG_BMAC is not set
++# CONFIG_GMAC is not set
+ # CONFIG_SUNLANCE is not set
+ # CONFIG_HAPPYMEAL is not set
+ # CONFIG_SUNBMAC is not set
+@@ -446,15 +462,14 @@
+ # CONFIG_HP100 is not set
+ # CONFIG_NET_ISA is not set
+ CONFIG_NET_PCI=y
+-CONFIG_PCNET32=y
++# CONFIG_PCNET32 is not set
+ # CONFIG_AMD8111_ETH is not set
+ # CONFIG_ADAPTEC_STARFIRE is not set
+ # CONFIG_APRICOT is not set
++# CONFIG_B44 is not set
+ # CONFIG_CS89x0 is not set
+-CONFIG_TULIP=y
+-# CONFIG_TULIP_MWI is not set
+-CONFIG_TULIP_MMIO=y
+-CONFIG_DE4X5=m
++# CONFIG_TULIP is not set
++# CONFIG_DE4X5 is not set
+ # CONFIG_DGRS is not set
+ # CONFIG_DM9102 is not set
+ # CONFIG_EEPRO100 is not set
+@@ -466,8 +481,8 @@
+ # CONFIG_NE2K_PCI is not set
+ # CONFIG_NE3210 is not set
+ # CONFIG_ES3210 is not set
+-# CONFIG_8139CP is not set
+-# CONFIG_8139TOO is not set
++CONFIG_8139CP=y
++CONFIG_8139TOO=y
+ # CONFIG_8139TOO_PIO is not set
+ # CONFIG_8139TOO_TUNE_TWISTER is not set
+ # CONFIG_8139TOO_8129 is not set
+@@ -477,8 +492,7 @@
+ # CONFIG_SUNDANCE is not set
+ # CONFIG_SUNDANCE_MMIO is not set
+ # CONFIG_TLAN is not set
+-# CONFIG_TC35815 is not set
+-# CONFIG_VIA_RHINE is not set
++CONFIG_VIA_RHINE=y
+ # CONFIG_VIA_RHINE_MMIO is not set
+ # CONFIG_WINBOND_840 is not set
+ # CONFIG_NET_POCKET is not set
+@@ -503,10 +517,10 @@
+ CONFIG_PPP_MULTILINK=y
+ # CONFIG_PPP_FILTER is not set
+ CONFIG_PPP_ASYNC=y
+-# CONFIG_PPP_SYNC_TTY is not set
++CONFIG_PPP_SYNC_TTY=y
+ CONFIG_PPP_DEFLATE=y
+-# CONFIG_PPP_BSDCOMP is not set
+-# CONFIG_PPPOE is not set
++CONFIG_PPP_BSDCOMP=y
++CONFIG_PPPOE=y
+ # CONFIG_SLIP is not set
+ 
+ #
+@@ -569,29 +583,30 @@
+ #
+ CONFIG_FB=y
+ CONFIG_DUMMY_CONSOLE=y
+-# CONFIG_FB_RIVA is not set
++CONFIG_FB_RIVA=y
+ # CONFIG_FB_CLGEN is not set
+-# CONFIG_FB_PM2 is not set
+-# CONFIG_FB_PM3 is not set
++CONFIG_FB_PM2=y
++# CONFIG_FB_PM2_FIFO_DISCONNECT is not set
++CONFIG_FB_PM2_PCI=y
++CONFIG_FB_PM3=m
+ # CONFIG_FB_CYBER2000 is not set
+-CONFIG_FB_OF=y
+-CONFIG_FB_CONTROL=y
+-CONFIG_FB_PLATINUM=y
+-CONFIG_FB_VALKYRIE=y
+-CONFIG_FB_CT65550=y
+-CONFIG_FB_IMSTT=y
+-# CONFIG_FB_S3TRIO is not set
++# CONFIG_FB_OF is not set
++# CONFIG_FB_CONTROL is not set
++# CONFIG_FB_PLATINUM is not set
++# CONFIG_FB_VALKYRIE is not set
++# CONFIG_FB_CT65550 is not set
++# CONFIG_FB_IMSTT is not set
++CONFIG_FB_S3TRIO=y
+ # CONFIG_FB_VGA16 is not set
+ CONFIG_FB_MATROX=y
+ CONFIG_FB_MATROX_MILLENIUM=y
+ CONFIG_FB_MATROX_MYSTIQUE=y
+-# CONFIG_FB_MATROX_G450 is not set
+-CONFIG_FB_MATROX_G100A=y
++CONFIG_FB_MATROX_G450=y
+ CONFIG_FB_MATROX_G100=y
+ # CONFIG_FB_MATROX_I2C is not set
+ # CONFIG_FB_MATROX_MAVEN is not set
+ CONFIG_FB_MATROX_PROC=y
+-# CONFIG_FB_MATROX_MULTIHEAD is not set
++CONFIG_FB_MATROX_MULTIHEAD=y
+ CONFIG_FB_ATY=y
+ CONFIG_FB_ATY_GX=y
+ CONFIG_FB_ATY_CT=y
+@@ -601,7 +616,7 @@
+ # CONFIG_FB_SIS is not set
+ # CONFIG_FB_NEOMAGIC is not set
+ CONFIG_FB_3DFX=y
+-# CONFIG_FB_VOODOO1 is not set
++CONFIG_FB_VOODOO1=y
+ # CONFIG_FB_TRIDENT is not set
+ # CONFIG_FB_VIRTUAL is not set
+ # CONFIG_FBCON_ADVANCED is not set
+@@ -611,13 +626,13 @@
+ CONFIG_FBCON_CFB32=y
+ # CONFIG_FBCON_FONTWIDTH8_ONLY is not set
+ CONFIG_FBCON_FONTS=y
+-# CONFIG_FONT_8x8 is not set
++CONFIG_FONT_8x8=y
+ CONFIG_FONT_8x16=y
+ CONFIG_FONT_SUN8x16=y
+ CONFIG_FONT_SUN12x22=y
+-# CONFIG_FONT_6x11 is not set
+-# CONFIG_FONT_PEARL_8x8 is not set
+-# CONFIG_FONT_ACORN_8x8 is not set
++CONFIG_FONT_6x11=y
++CONFIG_FONT_PEARL_8x8=y
++CONFIG_FONT_ACORN_8x8=y
+ # CONFIG_FB_COMPAT_XPMAC is not set
+ 
+ #
+@@ -634,48 +649,48 @@
+ #
+ # Macintosh device drivers
+ #
+-CONFIG_ADB_CUDA=y
+-CONFIG_ADB_PMU=y
+-# CONFIG_PMAC_PBOOK is not set
+-# CONFIG_PMAC_BACKLIGHT is not set
++# CONFIG_ADB_CUDA is not set
++# CONFIG_ADB_PMU is not set
+ # CONFIG_MAC_FLOPPY is not set
+-CONFIG_MAC_SERIAL=m
+-CONFIG_ADB=y
+-CONFIG_ADB_MACIO=y
+-CONFIG_INPUT_ADBHID=y
+-CONFIG_MAC_ADBKEYCODES=y
+-CONFIG_MAC_EMUMOUSEBTN=y
++# CONFIG_MAC_SERIAL is not set
++# CONFIG_ADB is not set
+ CONFIG_MAC_HID=y
+-# CONFIG_ANSLCD is not set
+ 
+ #
+ # Character devices
+ #
+ CONFIG_VT=y
+ CONFIG_VT_CONSOLE=y
+-CONFIG_SERIAL=m
++CONFIG_SERIAL=y
++CONFIG_SERIAL_CONSOLE=y
+ # CONFIG_SERIAL_EXTENDED is not set
+ # CONFIG_SERIAL_NONSTANDARD is not set
+ CONFIG_UNIX98_PTYS=y
+ CONFIG_UNIX98_PTY_COUNT=256
++# CONFIG_PRINTER is not set
++# CONFIG_PPDEV is not set
++# CONFIG_TIPAR is not set
++# CONFIG_BRIQ_PANEL is not set
+ 
+ #
+ # I2C support
+ #
+-CONFIG_I2C=m
+-# CONFIG_I2C_ALGOBIT is not set
++CONFIG_I2C=y
++CONFIG_I2C_ALGOBIT=y
++# CONFIG_I2C_PHILIPSPAR is not set
++# CONFIG_I2C_ELV is not set
++# CONFIG_I2C_VELLEMAN is not set
++# CONFIG_SCx200_I2C is not set
++# CONFIG_SCx200_ACB is not set
+ # CONFIG_I2C_ALGOPCF is not set
+-CONFIG_I2C_KEYWEST=m
+-CONFIG_I2C_CHARDEV=m
+-CONFIG_I2C_PROC=m
++# CONFIG_I2C_KEYWEST is not set
++CONFIG_I2C_CHARDEV=y
++CONFIG_I2C_PROC=y
+ 
+ #
+ # Mice
+ #
+-CONFIG_BUSMOUSE=y
+-# CONFIG_ATIXL_BUSMOUSE is not set
+-# CONFIG_LOGIBUSMOUSE is not set
+-# CONFIG_MS_BUSMOUSE is not set
++# CONFIG_BUSMOUSE is not set
+ CONFIG_MOUSE=y
+ CONFIG_PSMOUSE=y
+ # CONFIG_82C710_MOUSE is not set
+@@ -730,7 +745,7 @@
+ # CONFIG_SCx200_GPIO is not set
+ # CONFIG_AMD_PM768 is not set
+ CONFIG_NVRAM=y
+-# CONFIG_RTC is not set
++CONFIG_RTC=y
+ # CONFIG_DTLK is not set
+ # CONFIG_R3964 is not set
+ # CONFIG_APPLICOM is not set
+@@ -745,31 +760,68 @@
+ #
+ # Multimedia devices
+ #
+-# CONFIG_VIDEO_DEV is not set
++CONFIG_VIDEO_DEV=m
++
++#
++# Video For Linux
++#
++# CONFIG_VIDEO_PROC_FS is not set
++# CONFIG_I2C_PARPORT is not set
++
++#
++# Video Adapters
++#
++CONFIG_VIDEO_BT848=m
++# CONFIG_VIDEO_PMS is not set
++# CONFIG_VIDEO_PLANB is not set
++# CONFIG_VIDEO_BWQCAM is not set
++# CONFIG_VIDEO_CQCAM is not set
++# CONFIG_VIDEO_W9966 is not set
++# CONFIG_VIDEO_CPIA is not set
++# CONFIG_VIDEO_SAA5249 is not set
++# CONFIG_TUNER_3036 is not set
++# CONFIG_VIDEO_STRADIS is not set
++# CONFIG_VIDEO_ZORAN is not set
++# CONFIG_VIDEO_ZORAN_BUZ is not set
++# CONFIG_VIDEO_ZORAN_DC10 is not set
++# CONFIG_VIDEO_ZORAN_LML33 is not set
++# CONFIG_VIDEO_ZR36120 is not set
++# CONFIG_VIDEO_MEYE is not set
++
++#
++# Radio Adapters
++#
++# CONFIG_RADIO_GEMTEK_PCI is not set
++# CONFIG_RADIO_MAXIRADIO is not set
++# CONFIG_RADIO_MAESTRO is not set
++# CONFIG_RADIO_MIROPCM20 is not set
+ 
+ #
+ # File systems
+ #
+ # CONFIG_QUOTA is not set
++# CONFIG_QFMT_V2 is not set
+ # CONFIG_AUTOFS_FS is not set
+ # CONFIG_AUTOFS4_FS is not set
+-# CONFIG_REISERFS_FS is not set
++CONFIG_REISERFS_FS=y
+ # CONFIG_REISERFS_CHECK is not set
+ # CONFIG_REISERFS_PROC_INFO is not set
+ # CONFIG_ADFS_FS is not set
+ # CONFIG_ADFS_FS_RW is not set
+-# CONFIG_AFFS_FS is not set
+-CONFIG_HFS_FS=m
+-# CONFIG_BEFS_FS is not set
++CONFIG_AFFS_FS=y
++CONFIG_ASFS_FS=y
++CONFIG_HFS_FS=y
++CONFIG_HFSPLUS_FS=y
++CONFIG_BEFS_FS=m
+ # CONFIG_BEFS_DEBUG is not set
+ # CONFIG_BFS_FS is not set
+-# CONFIG_EXT3_FS is not set
+-# CONFIG_JBD is not set
++CONFIG_EXT3_FS=y
++CONFIG_JBD=y
+ # CONFIG_JBD_DEBUG is not set
+-CONFIG_FAT_FS=m
+-CONFIG_MSDOS_FS=m
++CONFIG_FAT_FS=y
++CONFIG_MSDOS_FS=y
+ # CONFIG_UMSDOS_FS is not set
+-CONFIG_VFAT_FS=m
++CONFIG_VFAT_FS=y
+ # CONFIG_EFS_FS is not set
+ # CONFIG_JFFS_FS is not set
+ # CONFIG_JFFS2_FS is not set
+@@ -777,18 +829,18 @@
+ CONFIG_TMPFS=y
+ CONFIG_RAMFS=y
+ CONFIG_ISO9660_FS=y
+-# CONFIG_JOLIET is not set
+-# CONFIG_ZISOFS is not set
++CONFIG_JOLIET=y
++CONFIG_ZISOFS=y
+ # CONFIG_JFS_FS is not set
+ # CONFIG_JFS_DEBUG is not set
+ # CONFIG_JFS_STATISTICS is not set
+ # CONFIG_MINIX_FS is not set
+ # CONFIG_VXFS_FS is not set
+-# CONFIG_NTFS_FS is not set
++CONFIG_NTFS_FS=m
+ # CONFIG_NTFS_RW is not set
+ # CONFIG_HPFS_FS is not set
+ CONFIG_PROC_FS=y
+-CONFIG_DEVFS_FS=y
++# CONFIG_DEVFS_FS is not set
+ # CONFIG_DEVFS_MOUNT is not set
+ # CONFIG_DEVFS_DEBUG is not set
+ CONFIG_DEVPTS_FS=y
+@@ -797,7 +849,7 @@
+ # CONFIG_ROMFS_FS is not set
+ CONFIG_EXT2_FS=y
+ # CONFIG_SYSV_FS is not set
+-# CONFIG_UDF_FS is not set
++CONFIG_UDF_FS=y
+ # CONFIG_UDF_RW is not set
+ # CONFIG_UFS_FS is not set
+ # CONFIG_UFS_FS_WRITE is not set
+@@ -808,13 +860,15 @@
+ # CONFIG_CODA_FS is not set
+ # CONFIG_INTERMEZZO_FS is not set
+ CONFIG_NFS_FS=y
+-# CONFIG_NFS_V3 is not set
++CONFIG_NFS_V3=y
++# CONFIG_NFS_DIRECTIO is not set
+ # CONFIG_ROOT_NFS is not set
+ CONFIG_NFSD=y
+-# CONFIG_NFSD_V3 is not set
++CONFIG_NFSD_V3=y
+ # CONFIG_NFSD_TCP is not set
+ CONFIG_SUNRPC=y
+ CONFIG_LOCKD=y
++CONFIG_LOCKD_V4=y
+ # CONFIG_SMB_FS is not set
+ # CONFIG_NCP_FS is not set
+ # CONFIG_NCPFS_PACKET_SIGNING is not set
+@@ -825,7 +879,7 @@
+ # CONFIG_NCPFS_SMALLDOS is not set
+ # CONFIG_NCPFS_NLS is not set
+ # CONFIG_NCPFS_EXTRAS is not set
+-# CONFIG_ZISOFS_FS is not set
++CONFIG_ZISOFS_FS=y
+ 
+ #
+ # Partition Types
+@@ -833,9 +887,9 @@
+ CONFIG_PARTITION_ADVANCED=y
+ # CONFIG_ACORN_PARTITION is not set
+ # CONFIG_OSF_PARTITION is not set
+-# CONFIG_AMIGA_PARTITION is not set
++CONFIG_AMIGA_PARTITION=y
+ # CONFIG_ATARI_PARTITION is not set
+-CONFIG_MAC_PARTITION=y
++# CONFIG_MAC_PARTITION is not set
+ CONFIG_MSDOS_PARTITION=y
+ # CONFIG_BSD_DISKLABEL is not set
+ # CONFIG_MINIX_SUBPARTITION is not set
+@@ -894,11 +948,8 @@
+ #
+ # Sound
+ #
+-CONFIG_SOUND=m
+-CONFIG_DMASOUND_PMAC=m
+-CONFIG_DMASOUND=m
+-CONFIG_I2C=m
+-CONFIG_I2C_KEYWEST=m
++CONFIG_SOUND=y
++# CONFIG_DMASOUND_PMAC is not set
+ # CONFIG_SOUND_ALI5455 is not set
+ # CONFIG_SOUND_BT878 is not set
+ # CONFIG_SOUND_CMPCI is not set
+@@ -939,9 +990,9 @@
+ # USB Host Controller Drivers
+ #
+ # CONFIG_USB_EHCI_HCD is not set
+-# CONFIG_USB_UHCI is not set
++CONFIG_USB_UHCI=y
+ # CONFIG_USB_UHCI_ALT is not set
+-CONFIG_USB_OHCI=y
++# CONFIG_USB_OHCI is not set
+ 
+ #
+ # USB Device Class drivers
+@@ -960,15 +1011,15 @@
+ # CONFIG_USB_STORAGE_SDDR09 is not set
+ # CONFIG_USB_STORAGE_SDDR55 is not set
+ # CONFIG_USB_STORAGE_JUMPSHOT is not set
+-CONFIG_USB_ACM=m
+-CONFIG_USB_PRINTER=m
++# CONFIG_USB_ACM is not set
++# CONFIG_USB_PRINTER is not set
+ 
+ #
+ # USB Human Interface Devices (HID)
+ #
+ CONFIG_USB_HID=y
+ CONFIG_USB_HIDINPUT=y
+-# CONFIG_USB_HIDDEV is not set
++CONFIG_USB_HIDDEV=y
+ # CONFIG_USB_AIPTEK is not set
+ # CONFIG_USB_WACOM is not set
+ # CONFIG_USB_KBTAB is not set
+@@ -979,17 +1030,22 @@
+ #
+ # CONFIG_USB_DC2XX is not set
+ # CONFIG_USB_MDC800 is not set
+-CONFIG_USB_SCANNER=m
++# CONFIG_USB_SCANNER is not set
+ # CONFIG_USB_MICROTEK is not set
+ # CONFIG_USB_HPUSBSCSI is not set
+ 
+ #
+ # USB Multimedia devices
+ #
+-
+-#
+-#   Video4Linux support is needed for USB Multimedia device support
+-#
++# CONFIG_USB_IBMCAM is not set
++# CONFIG_USB_KONICAWC is not set
++# CONFIG_USB_OV511 is not set
++# CONFIG_USB_PWC is not set
++# CONFIG_USB_SE401 is not set
++# CONFIG_USB_STV680 is not set
++# CONFIG_USB_VICAM is not set
++# CONFIG_USB_DSBR is not set
++# CONFIG_USB_DABUSB is not set
+ 
+ #
+ # USB Network adaptors
+@@ -998,6 +1054,7 @@
+ # CONFIG_USB_RTL8150 is not set
+ # CONFIG_USB_KAWETH is not set
+ # CONFIG_USB_CATC is not set
++# CONFIG_USB_AX8817X is not set
+ # CONFIG_USB_CDCETHER is not set
+ # CONFIG_USB_USBNET is not set
+ 
+@@ -1009,28 +1066,7 @@
+ #
+ # USB Serial Converter support
+ #
+-CONFIG_USB_SERIAL=m
+-# CONFIG_USB_SERIAL_DEBUG is not set
+-# CONFIG_USB_SERIAL_GENERIC is not set
+-# CONFIG_USB_SERIAL_BELKIN is not set
+-# CONFIG_USB_SERIAL_WHITEHEAT is not set
+-# CONFIG_USB_SERIAL_DIGI_ACCELEPORT is not set
+-# CONFIG_USB_SERIAL_EMPEG is not set
+-# CONFIG_USB_SERIAL_FTDI_SIO is not set
+-CONFIG_USB_SERIAL_VISOR=m
+-# CONFIG_USB_SERIAL_IPAQ is not set
+-# CONFIG_USB_SERIAL_IR is not set
+-# CONFIG_USB_SERIAL_EDGEPORT is not set
+-# CONFIG_USB_SERIAL_EDGEPORT_TI is not set
+-# CONFIG_USB_SERIAL_KEYSPAN_PDA is not set
+-# CONFIG_USB_SERIAL_KEYSPAN is not set
+-# CONFIG_USB_SERIAL_MCT_U232 is not set
+-# CONFIG_USB_SERIAL_KLSI is not set
+-# CONFIG_USB_SERIAL_KOBIL_SCT is not set
+-# CONFIG_USB_SERIAL_PL2303 is not set
+-# CONFIG_USB_SERIAL_CYBERJACK is not set
+-# CONFIG_USB_SERIAL_XIRCOM is not set
+-# CONFIG_USB_SERIAL_OMNINET is not set
++# CONFIG_USB_SERIAL is not set
+ 
+ #
+ # USB Miscellaneous drivers
+@@ -1047,8 +1083,14 @@
+ # CONFIG_BLUEZ is not set
+ 
+ #
++# Cryptographic options
++#
++# CONFIG_CRYPTO is not set
++
++#
+ # Library routines
+ #
++# CONFIG_CRC32 is not set
+ CONFIG_ZLIB_INFLATE=y
+ CONFIG_ZLIB_DEFLATE=y
+ 
+diff -urN linux-2.4.22-ppc/arch/ppc/kernel/prom_init.c linux-2.4.22-pegasos/arch/ppc/kernel/prom_init.c
+--- linux-2.4.22-ppc/arch/ppc/kernel/prom_init.c	2003-08-26 15:15:41.000000000 +0200
++++ linux-2.4.22-pegasos/arch/ppc/kernel/prom_init.c	2003-08-27 11:47:44.000000000 +0200
+@@ -699,6 +699,9 @@
+ 	char *p, *d;
+  	unsigned long phys;
+ 	void *result[3];
++	char model[32];
++	phandle node;
++	int rc;
+ 
+  	/* Default */
+  	phys = (unsigned long) &_stext;
+@@ -783,6 +786,10 @@
+ 	prom_print("from prom_init\n");
+ 	prom_stdout = 0;
+ 
++	node = call_prom("finddevice", 1, 1, "/");
++	rc = call_prom("getprop", 4, 1, node, "model",model, sizeof(model));
++	if (rc > 0 && !strncmp(model, "Pegasos", 7)) phys = 0x00010000;
++
+ 	return phys;
+ }
+ 
+diff -urN linux-2.4.22-ppc/arch/ppc/platforms/chrp_pci.c linux-2.4.22-pegasos/arch/ppc/platforms/chrp_pci.c
+--- linux-2.4.22-ppc/arch/ppc/platforms/chrp_pci.c	2003-08-26 15:17:25.000000000 +0200
++++ linux-2.4.22-pegasos/arch/ppc/platforms/chrp_pci.c	2003-08-26 17:47:28.000000000 +0200
+@@ -291,7 +291,7 @@
+ 	struct pci_controller *hose;
+ 	unsigned int *dma;
+ 	char *model, *machine;
+-	int is_longtrail = 0, is_mot = 0;
++	int is_longtrail = 0, is_mot = 0, is_pegasos = 0;
+ 	struct device_node *root = find_path_device("/");
+ 
+ 	/*
+@@ -303,6 +303,7 @@
+ 	if (machine != NULL) {
+ 		is_longtrail = strncmp(machine, "IBM,LongTrail", 13) == 0;
+ 		is_mot = strncmp(machine, "MOT", 3) == 0;
++		is_pegasos = strncmp(machine, "Pegasos", 7) == 0;
+ 	}
+ 	for (dev = root->child; dev != NULL; dev = dev->sibling) {
+ 		if (dev->type == NULL || strcmp(dev->type, "pci") != 0)
+@@ -365,6 +366,8 @@
+ 					pci_dram_offset = *dma;
+ 				}
+ 			}
++		} else if (is_pegasos) {
++			setup_indirect_pci(hose, 0xfec00cf8, 0xfee00cfc);
+ 		} else {
+ 			printk("No methods for %s (model %s), using RTAS\n",
+ 			       dev->full_name, model);
+@@ -387,6 +390,8 @@
+                ppc_md.pcibios_fixup = longtrail_pcibios_fixup;
+        else if (chrp_is_briq)
+                ppc_md.pcibios_fixup = briq_pcibios_fixup;
++       else if (is_pegasos)
++               ppc_md.pcibios_fixup = NULL;
+        else
+                ppc_md.pcibios_fixup = chrp_pcibios_fixup;
+ }
+diff -urN linux-2.4.22-ppc/arch/ppc/platforms/chrp_setup.c linux-2.4.22-pegasos/arch/ppc/platforms/chrp_setup.c
+--- linux-2.4.22-ppc/arch/ppc/platforms/chrp_setup.c	2003-08-26 15:18:13.000000000 +0200
++++ linux-2.4.22-pegasos/arch/ppc/platforms/chrp_setup.c	2003-08-26 17:47:28.000000000 +0200
+@@ -440,8 +440,28 @@
+ 	i8259_init(intack);
+ }
+ 
++static void __init
++pegasos_init_irq_8259(unsigned long intack)
++{
++	int i;
++	
++	ppc_md.get_irq = i8259_irq;
++	for (i = 0; i < NUM_8259_INTERRUPTS; i++) {
++		if (i<16) {
++			/* byte access */
++			unsigned int port = 0x4d0 + (i >> 3);
++			/* ask HW directly */
++			irq_desc[i].status |= (((inb(port) >> (i & 7)) & 1) ? IRQ_LEVEL : 0 );
++		}
++		irq_desc[i].handler = &i8259_pic;
++	}
++	i8259_init(intack);
++}
++
+ void __init chrp_init_IRQ(void)
+ {
++	struct device_node *root = find_path_device("/");
++	char *machine;
+ 	struct device_node *np;
+ 	unsigned long intack = 0;
+ 	struct device_node *main_irq_ctrler = NULL;
+@@ -471,6 +491,10 @@
+ 			main_irq_ctrler = find_phandle(*irq_ctrler_ph);
+ 	}
+ 
++	machine = get_property(root, "model", NULL);
++	if (main_irq_ctrler == NULL && (strncmp(machine, "Pegasos", 7) == 0))
++		pegasos_init_irq_8259(intack);
++	else
+ 	if (main_irq_ctrler && device_is_compatible(main_irq_ctrler, "8259"))
+ 		chrp_init_irq_8259(intack);
+ 	else
+@@ -570,7 +594,10 @@
+ 	ppc_md.show_cpuinfo   = chrp_show_cpuinfo;
+ 	ppc_md.irq_cannonicalize = chrp_irq_cannonicalize;
+ 	ppc_md.init_IRQ       = chrp_init_IRQ;
+-	ppc_md.get_irq        = openpic_get_irq;
++	if (strncmp(machine, "Pegasos", 7) == 0)
++		ppc_md.get_irq	= i8259_irq;
++	else
++		ppc_md.get_irq	= openpic_get_irq;
+ 
+ 	ppc_md.init           = chrp_init2;
+ 
+diff -urN linux-2.4.22-ppc/Documentation/Configure.help linux-2.4.22-pegasos/Documentation/Configure.help
+--- linux-2.4.22-ppc/Documentation/Configure.help	2003-08-26 15:18:07.000000000 +0200
++++ linux-2.4.22-pegasos/Documentation/Configure.help	2003-09-05 12:30:42.000000000 +0200
+@@ -16295,6 +16295,24 @@
+   say M here and read <file:Documentation/modules.txt>.  If unsure,
+   say N.
+ 
++Amiga SFS file system support
++CONFIG_ASFS_FS
++  The Amiga Smart FileSystem (SFS) is the file system used on hard
++  disks by Amiga(tm) and MorphOS(tm) systems.  Say Y if you want
++  to be able to read files from an Amiga SFS partition on your hard
++  drive.
++
++  This file system driver is in EXPERIMENTAL state. Use it with care.
++  Although it CANNOT destroy your data (because it is a read-only
++  driver) it MIGHT cause a crash in some circumstances.
++
++  For more information read <file:Documentation/filesystems/asfs.txt>
++
++  This file system is also available as a module ( = code which can be
++  inserted in and removed from the running kernel whenever you want).
++  The module is called affs.o.  If you want to compile it as a module,
++  say M here and read <file:Documentation/modules.txt>. If unsure, say N.
++
+ Apple HFS file system support
+ CONFIG_HFS_FS
+   If you say Y here, you will be able to mount Macintosh-formatted
+diff -urN linux-2.4.22-ppc/Documentation/filesystems/00-INDEX linux-2.4.22-pegasos/Documentation/filesystems/00-INDEX
+--- linux-2.4.22-ppc/Documentation/filesystems/00-INDEX	2003-08-26 15:17:45.000000000 +0200
++++ linux-2.4.22-pegasos/Documentation/filesystems/00-INDEX	2003-09-05 12:26:40.000000000 +0200
+@@ -6,6 +6,8 @@
+ 	- info and mount options for the Acorn Advanced Disc Filing System.
+ affs.txt
+ 	- info and mount options for the Amiga Fast File System.
++asfs.txt
++	- info and mount options for the Amiga Smart File System.
+ befs.txt
+ 	- info for the BeOS file system (BFS)
+ bfs.txt
+diff -urN linux-2.4.22-ppc/Documentation/filesystems/asfs.txt linux-2.4.22-pegasos/Documentation/filesystems/asfs.txt
+--- linux-2.4.22-ppc/Documentation/filesystems/asfs.txt	1970-01-01 01:00:00.000000000 +0100
++++ linux-2.4.22-pegasos/Documentation/filesystems/asfs.txt	2003-09-05 12:26:40.000000000 +0200
+@@ -0,0 +1,68 @@
++
++Amiga SmartFileSystem, Linux implementation
++===========================================
++
++This is a simple read-only driver. It support reading files and directories.
++Symbolic links (in AmigaOS called soft links) are also supported. Read notes
++below about symlinks support.
++
++
++Mount options for the ASFS
++==========================
++
++setuid[=uid]	
++		This sets the owner of all files and directories in the file
++		system to uid or the uid of the current user, respectively.
++
++setgid[=gid]	
++		Same as above, but for gid.
++
++mode=mode	
++		Sets the mode flags to the given (octal) value. Directories 
++		will get an x permission if the corresponding r bit is set.
++		The default mode is 0444, which means all r bits are set
++		(for directories this means also that all x bits are set).
++
++prefix=path	Path will be prefixed to every absolute path name of
++		symbolic links on an AFFS partition. Default = "/".
++		(See below.)
++
++
++Symbolic links
++==============
++
++Although the Amiga and Linux file systems resemble each other, there
++are some, not always subtle, differences. One of them becomes apparent
++with symbolic links. While Linux has a file system with exactly one
++root directory, the Amiga has a separate root directory for each
++file system (for example, partition, floppy disk, ...). With the Amiga,
++these entities are called "volumes". They have symbolic names which
++can be used to access them. Thus, symbolic links can point to a
++different volume. ASFS turns the volume name into a directory name
++and prepends the prefix path (see prefix option) to it.
++
++Example:
++You mount all your Amiga partitions under /amiga/<volume> (where
++<volume> is the name of the volume), and you give the option
++"prefix=/amiga/" when mounting all your ASFS or AFFS partitions. (They
++might be "User", "WB" and "Graphics", the mount points /amiga/User,
++/amiga/WB and /amiga/Graphics). A symbolic link referring to
++"User:sc/include/dos/dos.h" will be followed to
++"/amiga/User/sc/include/dos/dos.h".
++
++
++Other information
++=================
++
++Supported block sizes are: 512, 1024, 2048 and 4096 bytes. Larger blocks
++speed up almost everything at the expense of wasted disk space. The speed
++gain above 4K seems not really worth the price, so you don't lose too
++much here, either.
++
++This file system hasn't been well tested yet. Athough it CANNOT destroy 
++your data, it MIGHT cause a crash. Sorry.
++
++This file system has been tested on Motorola PPC and 68k, as well as 
++Intel x86 systems. I don't know, if it works on other Linux systems.
++
++Some parts of this documentation has been adapted from AFFS driver docs.
+diff -urN linux-2.4.22-ppc/drivers/ide/pci/via82cxxx.c linux-2.4.22-pegasos/drivers/ide/pci/via82cxxx.c
+--- linux-2.4.22-ppc/drivers/ide/pci/via82cxxx.c	2003-08-26 15:16:28.000000000 +0200
++++ linux-2.4.22-pegasos/drivers/ide/pci/via82cxxx.c	2003-08-26 17:47:28.000000000 +0200
+@@ -90,6 +90,7 @@
+ 	{ "vt82c586b",	PCI_DEVICE_ID_VIA_82C586_0, 0x30, 0x3f, VIA_UDMA_33 | VIA_SET_FIFO },
+ 	{ "vt82c586a",	PCI_DEVICE_ID_VIA_82C586_0, 0x20, 0x2f, VIA_UDMA_33 | VIA_SET_FIFO },
+ 	{ "vt82c586",	PCI_DEVICE_ID_VIA_82C586_0, 0x00, 0x0f, VIA_UDMA_NONE | VIA_SET_FIFO },
++	{ "vt82c586c",  PCI_DEVICE_ID_VIA_82C586_1, 0x00, 0xff, VIA_UDMA_33 | VIA_SET_FIFO },
+ 	{ "vt82c576",	PCI_DEVICE_ID_VIA_82C576,   0x00, 0x2f, VIA_UDMA_NONE | VIA_SET_FIFO | VIA_NO_UNMASK },
+ 	{ "vt82c576",	PCI_DEVICE_ID_VIA_82C576,   0x00, 0x2f, VIA_UDMA_NONE | VIA_SET_FIFO | VIA_NO_UNMASK | VIA_BAD_ID },
+ 	{ NULL }
+@@ -588,6 +589,8 @@
+ 	hwif->tuneproc = &via82cxxx_tune_drive;
+ 	hwif->speedproc = &via_set_drive;
+ 
++	hwif->irq = hwif->channel ? 15 : 14;
++
+ 	for (i = 0; i < 2; i++) {
+ 		hwif->drives[i].io_32bit = 1;
+ 		hwif->drives[i].unmask = (via_config->flags & VIA_NO_UNMASK) ? 0 : 1;
+diff -urN linux-2.4.22-ppc/drivers/net/via-rhine.c linux-2.4.22-pegasos/drivers/net/via-rhine.c
+--- linux-2.4.22-ppc/drivers/net/via-rhine.c	2003-08-26 15:18:07.000000000 +0200
++++ linux-2.4.22-pegasos/drivers/net/via-rhine.c	2003-08-26 15:54:08.000000000 +0200
+@@ -739,7 +739,7 @@
+ 
+ 	if (!is_valid_ether_addr(dev->dev_addr)) {
+ 		printk(KERN_ERR "Invalid MAC address for card #%d\n", card_idx);
+-		goto err_out_unmap;
++		/*goto err_out_unmap;*/
+ 	}
+ 
+ 	if (chip_id == VT6102) {
+diff -urN linux-2.4.22-ppc/drivers/video/tdfxfb.c linux-2.4.22-pegasos/drivers/video/tdfxfb.c
+--- linux-2.4.22-ppc/drivers/video/tdfxfb.c	2003-08-26 15:17:56.000000000 +0200
++++ linux-2.4.22-pegasos/drivers/video/tdfxfb.c	2003-09-02 12:54:05.000000000 +0200
+@@ -764,7 +764,11 @@
+    tdfx_outl(SRCXY,     0);
+    tdfx_outl(DSTXY,     xx | (yy << 16));
+    tdfx_outl(COMMAND_2D, COMMAND_2D_H2S_BITBLT | (ROP_COPY << 24));
++#if defined(__BIG_ENDIAN)
++   tdfx_outl(SRCFORMAT, 0x500000);
++#else
+    tdfx_outl(SRCFORMAT, 0x400000);
++#endif
+    tdfx_outl(DSTFORMAT, fmt);
+    tdfx_outl(DSTSIZE,   fontwidth(p) | (fontheight(p) << 16));
+    i=fontheight(p);
+@@ -822,7 +826,11 @@
+    tdfx_outl(COMMAND_3D, COMMAND_3D_NOP);
+    tdfx_outl(COLORFORE, fgx);
+    tdfx_outl(COLORBACK, bgx);
++#if defined(__BIG_ENDIAN)
++   tdfx_outl(SRCFORMAT, 0x500000);
++#else
+    tdfx_outl(SRCFORMAT, 0x400000);
++#endif
+    tdfx_outl(DSTFORMAT, fmt);
+    tdfx_outl(DSTSIZE, w | (h << 16));
+    tdfx_outl(SRCXY,     0);
+@@ -2365,9 +2373,7 @@
+    tdfxfb_createcursorshape(p);
+    xline = ~((1 << (32 - fb_info.cursor.w)) - 1);
+ 
+-#ifdef __LITTLE_ENDIAN
+    xline = swab32(xline);
+-#endif
+ 
+    cursorbase=(u8*)fb_info.bufbase_virt;
+    h=fb_info.cursor.cursorimage;     
+diff -urN linux-2.4.22-ppc/fs/asfs/inode.c linux-2.4.22-pegasos/fs/asfs/inode.c
+--- linux-2.4.22-ppc/fs/asfs/inode.c	1970-01-01 01:00:00.000000000 +0100
++++ linux-2.4.22-pegasos/fs/asfs/inode.c	2003-09-05 12:26:40.000000000 +0200
+@@ -0,0 +1,846 @@
++/*
++ *
++ * Amiga Smart File System, Linux implementation
++ *
++ * version: 0.6 (04.09.2003)
++ *  
++ * Copyright (C) 2003  Marek 'March' Szyprowski <marek@amiga.pl>
++ *
++ *
++ * Thanks to Marcin Kurek (Morgoth/Dreamolers-CAPS) for help.
++ *
++ * Based on the Linux implementation of the ROMFS file system
++ * Copyright (C) 1997-1999  Janos Farkas <chexum@shadow.banki.hu>
++ *
++ * Using parts of the Amiga FFS filesystem
++ * Copyright (C) 1993  Ray Burr
++ * Copyright (C) 1996  Hans-Joachim Widmaier
++ *
++ * and parts of the smbfs filesystem additionally
++ * Copyright (C) 1995, 1996 by Paal-Kr. Engstad and Volker Lendecke
++ * Copyright (C) 1997 by Volker Lendecke
++ *
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version
++ * 2 of the License, or (at your option) any later version.
++ *
++ *
++ * History:
++ *
++ * v0.6 (04.09.2003) - final read-only version
++ * - added support for HashTables, directory scaning should be
++ *   MUCH faster now
++ * - added checking of block IDs before reading any data from block
++ *
++ * v0.5 (19.07.2003)
++ * - added simple but effective extent cache - real speed-up 
++ *   in reading large files
++ * - added read support for symlinks - based on AFFS symlinks
++ *
++ * v0.4 (10.07.2003)
++ * - third code clean-up (thanks to Roman Zippel for advice)
++ * - now uses generic readpage and readinode routines
++ *
++ * v0.3beta (17.06.2003)
++ * - second code clean-up
++ *
++ * v0.2beta2 (15.06.2003)
++ * - fixed yet another stupid bug - driver can't read root block on little-endian systems
++ * v0.2beta (15.06.2003)
++ * - fixed stupid bug - now files have 'file' flag (S_IFREG) set...
++ * - added mount options to set uid, gid and mode of files and dirs
++ * - made hidden files & dirs really hidden (= not listed in directories)
++ * - code clean-up
++ *
++ * v0.1beta (11.06.2003) 
++ * - after many kernel crashes, finally got it! 
++ * - first working read-only filesystem driver
++ *
++ */
++
++/* todo:
++ *	- remove bugs
++ *	- considering write access...
++ */
++
++#include <linux/module.h>
++#include <linux/types.h>
++#include <linux/errno.h>
++#include <linux/slab.h>
++#include <linux/asfs_fs.h>
++#include <linux/fs.h>
++#include <linux/locks.h>
++#include <linux/init.h>
++#include <linux/smp_lock.h>
++
++#include <asm/byteorder.h>
++#include <asm/uaccess.h>
++
++static u32 asfs_calcchecksum(struct fsBlockHeader *block, u32 blocksize)
++{
++	u32 *data=(void *)block, checksum = 1, tmpchecksum = block->checksum;
++
++	block->checksum=0;
++	while(blocksize > 0) {
++		checksum+=be32_to_cpu(*data++);
++		blocksize-=4;
++	}
++	block->checksum=tmpchecksum;
++	return(-checksum);
++}
++
++static inline int 
++asfs_check_block(struct fsBlockHeader *block, u32 blocksize, u32 n, u32 id)
++{
++	if (asfs_calcchecksum((struct fsBlockHeader *)block, blocksize) == 
++		be32_to_cpu(((struct fsBlockHeader *)block)->checksum) && 
++		n == be32_to_cpu(((struct fsBlockHeader *)block)->ownblock) &&
++		id == be32_to_cpu(((struct fsBlockHeader *)block)->id))
++		return 1;
++	return 0;
++}
++
++/* get fs structure from block and do some checks... */
++static int asfs_get_contblock(struct super_block *sb, u32 n, u32 type, void *dest)
++{
++	struct buffer_head *bh;
++
++	bh = sb_bread(sb, n);
++	if (!bh)
++		return -1;		/* error */
++	memcpy(dest, ((char *)bh->b_data), sb->s_blocksize);
++	brelse(bh);
++
++	if (asfs_check_block(dest, sb->s_blocksize, n, type)) {
++		from32be(((struct fsBlockHeader *)dest)->ownblock);
++		return 1; /* all okay */
++	}
++	return -1; /* error */
++}
++
++static inline struct inode *asfs_get_root_inode(struct super_block *sb)
++{
++	struct inode *result = NULL;
++	struct fsObjectContainer *block;
++	struct fsObject *obj;
++
++	asfs_debug("asfs_get_root_inode\n");
++
++	block = kmalloc(sb->s_blocksize, GFP_KERNEL);
++	if (asfs_get_contblock(sb, ASFS_SB->rootobjectcontainer, ASFS_OBJECTCONTAINER_ID, block) < 0)
++		goto free_and_return;
++
++	obj = &(block->object[0]);
++	from32be(obj->objectnode);
++	from32be(obj->object.dir.firstdirblock);
++	from32be(obj->object.dir.hashtable);     
++	from32be(obj->datemodified);
++
++	if (obj->objectnode > 0)
++		result = iget4(sb, obj->objectnode, NULL, obj);
++
++free_and_return:
++	kfree(block);
++	return result;
++}
++
++static struct super_operations asfs_ops;
++
++static int asfs_parse_options(char *options, struct super_block *sb)
++{
++	char *this_char, *value, *optn;
++	int f;
++
++	/* Fill in defaults */
++	ASFS_SB->uid = ASFS_DEFAULT_UID;
++	ASFS_SB->gid = ASFS_DEFAULT_GID;
++	ASFS_SB->mode = ASFS_DEFAULT_MODE;
++	ASFS_SB->prefix = NULL;
++
++	if (!options)
++		return 1;
++	for (this_char = strtok(options,","); this_char; this_char = strtok(NULL,",")) {
++		f = 0;
++		if ((value = strchr(this_char,'=')) != NULL)
++			*value++ = 0;
++		if ((f = !strcmp(this_char,"setuid")) || !strcmp(this_char,"setgid")) {
++			if (value) {
++				if (!*value) {
++					printk("ASFS: Argument for set[ug]id option missing\n");
++					return 0;
++				} else {
++					(f ? ASFS_SB->uid : ASFS_SB->gid) = simple_strtoul(value,&value,0);
++					if (*value) {
++						printk("ASFS: Bad set[ug]id argument\n");
++						return 0;
++					}
++				}
++			}
++		} else if (!strcmp(this_char,"mode")) {
++			optn = "mode";
++			if (!value || !*value)
++				goto out_no_arg;
++			ASFS_SB->mode = simple_strtoul(value,&value,8) & 0777;
++			if (*value)
++				return 0;
++		} else if (!strcmp(this_char,"prefix")) {
++			optn = "prefix";
++			if (!value || !*value)
++				goto out_no_arg;
++			ASFS_SB->prefix = kmalloc(strlen(value) + 1,GFP_KERNEL);
++			if (!ASFS_SB->prefix)
++				return 0;
++			strcpy(ASFS_SB->prefix,value);
++		} else {
++			printk("ASFS: Unrecognized mount option %s\n", this_char);
++			return 0;
++		}
++	}
++	return 1;
++
++out_no_arg:
++	printk("ASFS: The %s option requires an argument\n", optn);
++	return 0;
++}
++
++static struct super_block *
++asfs_read_super(struct super_block *sb, void *data, int silent)
++{
++	struct buffer_head *bh;
++	kdev_t dev = sb->s_dev;
++	struct fsRootBlock *rootblock;
++
++	if (!asfs_parse_options(data, sb)) {
++		printk(KERN_ERR "ASFS: Error parsing options\n");
++		return NULL;
++	}
++
++	if (!sb_set_blocksize(sb, 512))
++		return NULL;
++	sb->s_maxbytes = 0xFFFFFFFF;
++
++	bh = sb_bread(sb, 0);
++	if (!bh) {
++		printk(KERN_ERR "ASFS: unable to read superblock\n");
++		goto outnobh;
++	}
++
++	rootblock = (struct fsRootBlock *)bh->b_data;
++
++	if (be32_to_cpu(rootblock->bheader.id) == ASFS_ROOTID && 
++		be16_to_cpu(rootblock->version) == ASFS_STRUCTURE_VERISON) {
++
++		sb->s_blocksize = be32_to_cpu(rootblock->blocksize);
++		ASFS_SB->totalblocks = be32_to_cpu(rootblock->totalblocks);
++		ASFS_SB->rootobjectcontainer = be32_to_cpu(rootblock->rootobjectcontainer);
++		ASFS_SB->extentbnoderoot = be32_to_cpu(rootblock->extentbnoderoot);
++		ASFS_SB->objectnoderoot = be32_to_cpu(rootblock->objectnoderoot);
++		ASFS_SB->flags = rootblock->bits;
++		brelse(bh);
++
++		if (!sb_set_blocksize(sb, sb->s_blocksize)) {
++			printk(KERN_ERR "ASFS: Found Amiga SFS RootBlock on dev %s, but blocksize %ld is not supported!\n", \
++			       bdevname(dev), sb->s_blocksize);
++			return NULL;
++		}
++
++		bh = sb_bread(sb, 0);
++		if (!bh) {
++			printk(KERN_ERR "ASFS: unable to read superblock\n");
++			goto out;
++		}
++		rootblock = (struct fsRootBlock *)bh->b_data;
++
++		if (asfs_check_block((void *)rootblock, sb->s_blocksize, 0, ASFS_ROOTID))
++			printk(KERN_NOTICE "ASFS: Found Amiga SFS RootBlock on dev %s. Checksum okay. Mounting...\n", \
++			       bdevname(dev));
++		else {
++			if (!silent)
++				printk(KERN_ERR "ASFS: Found Amiga SFS RootBlock on dev %s, but it has checksum error!\n", \
++				       bdevname(dev));
++			goto out;
++		}
++	} else {
++		if (!silent)
++			printk(KERN_ERR "ASFS: Can't find a valid Amiga SFS filesystem on dev %s.\n", \
++			       bdevname(dev));
++		goto out;
++	}
++
++	brelse(bh);
++
++	sb->s_magic = ASFS_MAGIC;
++	sb->s_flags |= MS_RDONLY | MS_NODEV | MS_NOSUID;
++	sb->s_op = &asfs_ops;
++	sb->s_root = d_alloc_root(asfs_get_root_inode(sb));
++	if (!sb->s_root)
++		goto outnobh;
++
++	/* Ehrhm; sorry.. :) */
++	if (0) {
++out:
++		brelse(bh);
++outnobh:
++		sb = NULL;
++	}
++	return sb;
++}
++
++static void asfs_put_super(struct super_block *sb)
++{
++	if (ASFS_SB->prefix)
++		kfree(ASFS_SB->prefix);
++	return;
++}
++
++/* That's simple too. */
++
++static int asfs_statfs(struct super_block *sb, struct statfs *buf)
++{
++	buf->f_type = ASFS_MAGIC;
++	buf->f_bsize = sb->s_blocksize;
++	buf->f_bfree = buf->f_bavail = buf->f_ffree;
++	buf->f_blocks = ASFS_SB->totalblocks;
++	buf->f_namelen = ASFS_MAXFN;
++	return 0;
++}
++
++static int asfs_get_fsObject_varlen(struct fsObject *obj)
++{
++	int len, i;
++	u8 *p = obj->name;
++	for (i=2; i > 0; p++)
++		if (*p == '\0')
++			i--;
++	len = (p - (u8 *)obj);
++	if (len & 1)
++		len++;
++	return len;
++}
++
++static int asfs_readdir(struct file *filp, void *dirent, filldir_t filldir)
++{
++	struct inode *dir = filp->f_dentry->d_inode;
++	struct super_block *sb = dir->i_sb;
++	unsigned long f_pos;
++	int stored = 0;
++	int obj_skip;
++
++	struct fsObjectContainer *objcont;
++	struct fsObject *obj;
++	int i;
++	u32 block;
++
++	asfs_debug("asfs_readdir:\n");
++
++	if (filp->f_pos == ASFS_SB->totalblocks)
++		return stored;
++
++	f_pos = filp->f_pos;
++
++	if (f_pos == 0) {
++		filp->private_data = (void *)0;
++		if (filldir(dirent, ".", 1, f_pos, dir->i_ino, DT_DIR) < 0)
++			return 0;
++		filp->f_pos = f_pos = 1;
++		stored++;
++	}
++	if (f_pos == 1) {
++		if (filldir(dirent, "..", 2, f_pos, filp->f_dentry->d_parent->d_inode->i_ino, DT_DIR) < 0)
++			return stored;
++		filp->f_pos = f_pos = 2;
++		stored++;
++	}
++
++	if (ASFS_DIR->firstblock == 0) {	/* empty directory */
++		filp->f_pos = ASFS_SB->totalblocks;
++		return stored;
++	}
++
++	objcont = kmalloc(sb->s_blocksize, GFP_KERNEL);
++
++	if (f_pos == 2) {	/* reading directory from its beginning */
++		block = ASFS_DIR->firstblock;
++		do {
++			if (asfs_get_contblock(sb, block, ASFS_OBJECTCONTAINER_ID, objcont) < 0)
++				goto free_and_end;
++			block = be32_to_cpu(objcont->previous);
++		} while (block != 0);
++		obj_skip = 0;
++	} else {
++		block = f_pos;
++		if (asfs_get_contblock(sb, block, ASFS_OBJECTCONTAINER_ID, objcont) < 0)
++			goto free_and_end;
++		obj_skip = (int)filp->private_data;
++	}
++
++	i=0;
++	block = objcont->bheader.ownblock;
++
++	do {
++		if (i != 0) {
++			if (asfs_get_contblock(sb, block, ASFS_OBJECTCONTAINER_ID, objcont) < 0)
++				goto free_and_end;
++		}
++
++		i = 0;
++		obj = &(objcont->object[0]);
++
++		while (be32_to_cpu(obj->objectnode) > 0 && 
++		      ((char *)obj - (char *)objcont) + sizeof(struct fsObject) < sb->s_blocksize) {
++			from32be(obj->objectnode);
++
++			if (obj_skip > 0) 
++				obj_skip--;	
++			else if (!(obj->bits & OTYPE_HIDDEN)) {
++				unsigned int type;
++				asfs_debug("ASFS: DirFilling: entry #%d (in_cont: %d) \"%s\" (node %u offset %u), type %d\n", \
++				           stored, i, obj->name, obj->objectnode, block, obj->bits);
++				filp->f_pos = block;
++				if (obj->bits & OTYPE_DIR)
++					type = DT_DIR;
++				else if (obj->bits & OTYPE_LINK && !(obj->bits & OTYPE_HARDLINK))
++					type = DT_LNK;
++				else
++					type = DT_REG;
++				if (filldir(dirent, obj->name, strlen(obj->name), block, obj->objectnode, type) < 0) {
++					filp->private_data = (void *)i;
++					asfs_debug("ASFS: DirFilling: to be continued...\n");
++					goto free_and_end;
++				}
++				stored++;
++			}
++			obj = (struct fsObject *)((char *)(obj) + asfs_get_fsObject_varlen(obj));
++			i++;
++		}
++		block = be32_to_cpu(objcont->next);
++
++	} while (block != 0);
++
++	filp->f_pos = ASFS_SB->totalblocks;
++
++free_and_end:
++	kfree(objcont);
++	return stored;
++}
++
++static inline u8 upperchar(u8 c)
++{
++	if((c>=224 && c<=254 && c!=247) || (c>='a' && c<='z'))
++		c-=32;
++	return(c);
++}
++
++static int namecmp(u8 *s, u8 *ct, int casesensitive)
++{
++	if (casesensitive) {
++		while (*s == *ct && *ct != '\0' && *ct != '/') {
++			s++; ct++;
++		}
++	} else {
++		while (upperchar(*s) == upperchar(*ct) && *ct != '\0' && *ct != '/') {
++			s++; ct++;
++		}
++	}
++	return (*s == '\0' && (*ct == '\0' || *ct == '/')) ? 0 : *ct - *s;
++}
++
++#define HASHCHAIN(x) (u16)(x % (u16)(((sb->s_blocksize) - sizeof(struct fsHashTable))>>2))
++
++static inline u16 hash(u8 *name, int casesensitive)
++{
++	u16 hashval=0;
++	while (name[hashval] != 0 && name[hashval] != '/')
++		hashval++;
++	if (casesensitive) {
++		u8 c = *name;
++		while (c != 0 && c != '/') {
++			hashval = hashval*13 + c;
++			c = *++name;
++		}
++	} else {
++		u8 c = *name;
++		while (c != 0 && c != '/') {
++			hashval = hashval*13 + upperchar(c);
++			c = *++name;
++		}
++	}
++	return hashval;
++}
++
++/* Finds a specific node by number. */
++static struct fsObjectNode *
++asfs_get_Node(struct super_block *sb, u32 nodeindex, u16 nodesize, u32 nodeno,
++              struct fsObjectNode *dest_node)
++{
++	struct fsNodeContainer *nodecont;
++	nodecont = kmalloc(sb->s_blocksize, GFP_KERNEL);
++
++	while (asfs_get_contblock(sb, nodeindex, ASFS_NODECONTAINER_ID, nodecont) > 0) {
++		if (be32_to_cpu(nodecont->nodes) == 1) {
++			*dest_node = *((struct fsObjectNode *) ((u8 *) nodecont->node + nodesize * \
++			             (nodeno - be32_to_cpu(nodecont->nodenumber))));
++			kfree(nodecont);
++			from32be(dest_node->node.data);
++			from32be(dest_node->next);
++			from16be(dest_node->hash16);
++			return dest_node;
++		} else {
++			u16 containerentry = (nodeno - be32_to_cpu(nodecont->nodenumber)) / 
++			                     be32_to_cpu(nodecont->nodes);
++			nodeindex = be32_to_cpu(nodecont->node[containerentry]) >> 
++			            (sb->s_blocksize_bits - ASFS_BLCKFACCURACY);
++		}
++	}
++	kfree(nodecont);
++	return NULL;
++}
++
++struct fsObject *
++asfs_find_obj_in_cont(struct super_block *sb, struct fsObjectContainer *objcont,
++                      u8 *name)
++{
++	struct fsObject *obj;
++
++	obj = &(objcont->object[0]);
++	while (be32_to_cpu(obj->objectnode) > 0 && 
++	      ((char *)obj - (char *)objcont) + sizeof(struct fsObject) < sb->s_blocksize) {
++		if (namecmp(obj->name, name, ASFS_SB->flags & ASFS_ROOTBITS_CASESENSITIVE) == 0) {
++			from32be(obj->objectnode);
++			/* these two below also convert file.size and file.firstdatablock */
++			from32be(obj->object.dir.firstdirblock); 
++			from32be(obj->object.dir.hashtable);     
++			from32be(obj->datemodified);
++			asfs_debug("Object found! Node %u, Name %s, Type: %d, inCont %u\n", \
++			           obj->objectnode, obj->name, obj->bits, objcont->bheader.ownblock);
++			return obj;
++		}
++		obj = (struct fsObject *)((u8 *)(obj) + asfs_get_fsObject_varlen(obj));
++	}
++	return NULL;
++}
++
++static struct dentry *asfs_lookup(struct inode *dir, struct dentry *dentry)
++{
++	int res = -EACCES;       /* placeholder for "no data here" */
++	struct inode *inode;
++	struct super_block *sb = dir->i_sb;
++	u8 *name = (u8 *) dentry->d_name.name;
++	struct fsObjectContainer *objcont;
++	struct fsObject *obj;
++	struct fsObjectNode obj_node;
++	u32 block, node;
++	u16 hash16;
++
++	asfs_debug("asfs_lookup: (searching \"%s\"...) ", name);
++	objcont = kmalloc(dir->i_sb->s_blocksize, GFP_KERNEL);
++
++	if (ASFS_DIR->hashtable != 0) {	/* hashtable block is available, quick search */
++
++		if (asfs_get_contblock(sb, ASFS_DIR->hashtable, ASFS_HASHTABLE_ID, objcont) < 0)
++			goto free_and_error;
++		hash16 = hash(name, ASFS_SB->flags & ASFS_ROOTBITS_CASESENSITIVE); 
++		node = be32_to_cpu(((struct fsHashTable *)objcont)->hashentry[HASHCHAIN(hash16)]);
++
++		while (node != 0) {
++			if (asfs_get_Node(sb, ASFS_SB->objectnoderoot, sizeof(struct fsObjectNode), 
++				 node, &obj_node) == NULL)
++				goto not_found;
++			if (obj_node.hash16 == hash16) {
++				if (asfs_get_contblock(sb, obj_node.node.data, ASFS_OBJECTCONTAINER_ID, objcont) < 0)
++					goto free_and_error;
++				if ((obj = asfs_find_obj_in_cont(sb, objcont, name)) != NULL)
++					goto found_inode;
++			}
++			node = obj_node.next;
++		}
++	} else { /* hashtable not available, long search */
++
++		block = ASFS_DIR->firstblock;
++		do {
++			if (asfs_get_contblock(sb, block, ASFS_OBJECTCONTAINER_ID, objcont) < 0)
++				goto free_and_error;
++			block = be32_to_cpu(objcont->previous);
++		} while (block != 0);
++		block = objcont->bheader.ownblock;
++
++		do {
++			if (block != objcont->bheader.ownblock)
++				if (asfs_get_contblock(sb, block, ASFS_OBJECTCONTAINER_ID, objcont) < 0)
++					goto free_and_error;		
++			if ((obj = asfs_find_obj_in_cont(sb, objcont, name)) != NULL)
++				goto found_inode;
++			block = be32_to_cpu(objcont->next);
++		} while (block != 0);
++	}
++
++not_found:
++	inode = NULL;
++	asfs_debug("object not found.\n");
++	if (0) {
++found_inode:
++		if (!(inode = iget4(sb, obj->objectnode, NULL, obj))) {
++			asfs_debug("ASFS: Strange - no inode allocated.\n");
++			goto free_and_error;
++		}
++	}
++	res = 0;
++	d_add(dentry, inode);
++free_and_error:
++	kfree(objcont);
++	return ERR_PTR(res);
++}
++
++static struct fsExtentBNode *
++asfs_search_BNodeTree(struct super_block *sb, u32 key, struct fsExtentBNode *dest)
++{
++	struct fsBNodeContainer *bnodecont;
++	struct fsExtentBNode *result = dest;
++	unsigned long block = ASFS_SB->extentbnoderoot;
++
++	bnodecont = kmalloc(sb->s_blocksize, GFP_KERNEL);
++	while (asfs_get_contblock(sb, block, ASFS_BNODECONTAINER_ID, bnodecont) > 0) {
++		from16be(bnodecont->btc.nodecount);
++		if (bnodecont->btc.isleaf) {
++			int i;
++			struct fsExtentBNode *exbnode;
++			exbnode = (void *)bnodecont->btc.bnode;
++			for (i=0; i < bnodecont->btc.nodecount; i++) {
++				from32be(exbnode->key);
++				if (exbnode->key == key) {
++					from32be(exbnode->next);
++					from32be(exbnode->prev);
++					from16be(exbnode->blocks);
++					*dest = *exbnode;
++					goto found;
++				}
++				exbnode = (void *)exbnode + bnodecont->btc.nodesize;
++			}
++		} else {
++			int i;
++			struct BNode *bnode;
++			bnode = (void *)bnodecont->btc.bnode;
++			for (i=0; i < bnodecont->btc.nodecount && key >= be32_to_cpu(bnode->key); i++)
++				bnode = (void *)bnode + bnodecont->btc.nodesize;
++
++			bnode = (void *)bnode - bnodecont->btc.nodesize;
++			block = be32_to_cpu(bnode->data);
++		}
++	}
++	/* read error or key not found */
++	result = NULL;
++found:
++	kfree(bnodecont);
++	return result;
++}
++
++static int
++asfs_get_block(struct inode *inode, long block, struct buffer_head *bh_result, int create)
++{
++	struct fsExtentBNode extend;
++	u32 filedata;
++	unsigned long pos;
++
++	asfs_debug("ASFS: get_block(%lu, %ld)\n", inode->i_ino, block);
++
++	if (block < 0) {
++		printk(KERN_ERR "ASFS: asfsget_block: requested block (%ld) < 0!\n", block);
++		return -EIO;
++	}
++
++	if (block >= inode->i_blocks) {
++		printk(KERN_ERR "ASFS: asfsget_block: strange block request %ld!\n", block);
++		return -EIO;
++	}
++
++	if (ASFS_INODE->ext_cache.key > 0 && ASFS_INODE->ext_cache.startblock <= block) {
++		extend.key = ASFS_INODE->ext_cache.key;
++		extend.next = ASFS_INODE->ext_cache.next;
++		extend.blocks = ASFS_INODE->ext_cache.blocks;
++		pos = ASFS_INODE->ext_cache.startblock;
++	} else {
++		if (asfs_search_BNodeTree(inode->i_sb, ASFS_INODE->firstblock, &extend) == NULL)
++			return -EIO;
++		pos = 0;
++	}
++	filedata = extend.next;
++
++	while (pos + extend.blocks <= block && extend.next != 0 && pos < inode->i_blocks) {
++		pos += extend.blocks;
++		if (asfs_search_BNodeTree(inode->i_sb, filedata, &extend) == NULL)
++			return -EIO;
++		filedata = extend.next;
++	}
++
++	bh_result->b_blocknr = extend.key + block - pos;
++	bh_result->b_dev = inode->i_dev;
++	bh_result->b_state |= (1UL << BH_Mapped);
++
++	ASFS_INODE->ext_cache.startblock = pos;
++	ASFS_INODE->ext_cache.key = extend.key;
++	ASFS_INODE->ext_cache.next = extend.next;
++	ASFS_INODE->ext_cache.blocks = extend.blocks;
++
++	return 0;
++}
++
++static int asfs_readpage(struct file *file, struct page *page)
++{
++	return block_read_full_page(page, asfs_get_block);
++}
++static int asfs_bmap(struct address_space *mapping, long block)
++{
++	return generic_block_bmap(mapping,block,asfs_get_block);
++}
++
++/* Mapping from our types to the kernel */
++
++static struct address_space_operations asfs_aops = {
++	.readpage	= asfs_readpage,
++	.sync_page	= block_sync_page,
++	.bmap		= asfs_bmap,
++};
++
++struct file_operations asfs_file_operations = {
++	.llseek		= generic_file_llseek,
++	.read		= generic_file_read,
++	.mmap		= generic_file_mmap,
++};
++
++static struct file_operations asfs_dir_operations = {
++	.read		= generic_read_dir,
++	.readdir	= asfs_readdir,
++};
++
++static struct inode_operations asfs_dir_inode_operations = {
++	.lookup		= asfs_lookup,
++};
++
++static int asfs_symlink_readpage(struct file *file, struct page *page)
++{
++	struct fsSoftLink *slinkcont;
++	struct inode *inode = page->mapping->host;
++	struct super_block *sb = inode->i_sb;
++	char *link = kmap(page);
++	int i = 0, j = 0;
++	char c, lc = 0, *pf, *lf;
++
++	slinkcont = kmalloc(sb->s_blocksize, GFP_KERNEL);
++
++	if (asfs_get_contblock(sb, ASFS_INODE->firstblock, ASFS_SOFTLINK_ID, slinkcont) < 0)
++		goto free_and_error;
++
++	lf = slinkcont->string;
++	pf = ASFS_SB->prefix ? ASFS_SB->prefix : "/";
++
++	if (strchr(lf,':')) {	/* Handle assign or volume name */
++		while (i < 1023 && (c = pf[i]))
++			link[i++] = c;
++		while (i < 1023 && lf[j] != ':')
++			link[i++] = lf[j++];
++		if (i < 1023)
++			link[i++] = '/';
++		j++;
++		lc = '/';
++	}
++	while (i < 1023 && (c = lf[j])) {
++		if (c == '/' && lc == '/' && i < 1020) {	/* parent dir */
++			link[i++] = '.';
++			link[i++] = '.';
++		}
++		link[i++] = c;
++		lc = c;
++		j++;
++	}
++	link[i] = '\0';
++	SetPageUptodate(page);
++	kunmap(page);
++	UnlockPage(page);
++	kfree(slinkcont);
++	return 0;
++free_and_error:
++	kfree(slinkcont);
++	SetPageError(page);
++	kunmap(page);
++	UnlockPage(page);
++	return -EIO;
++}
++
++static struct address_space_operations asfs_symlink_aops = {
++	.readpage	= asfs_symlink_readpage,
++};
++
++static void asfs_read_inode2(struct inode *inode, void *arg)
++{
++	struct super_block *sb = inode->i_sb;
++	struct fsObject *obj = arg;
++
++	inode->i_mode = ASFS_SB->mode;
++	inode->i_mtime = inode->i_atime = inode->i_ctime = obj->datemodified + (365*8+2)*24*60*60;  
++	/* Linux: seconds since 01-01-1970, AmigaSFS: seconds since 01-01-1978 */
++	inode->i_uid = ASFS_SB->uid;
++	inode->i_gid = ASFS_SB->gid;
++
++	asfs_debug("asfs_read_inode2: Setting-up node %lu... ", inode->i_ino);
++
++	if (obj->bits & OTYPE_DIR) {
++		asfs_debug("dir (FirstdirBlock: %u, HashTable %u)\n", \
++		           obj->object.dir.firstdirblock, obj->object.dir.hashtable);
++
++		inode->i_size = 0;
++		inode->i_op = &asfs_dir_inode_operations;
++		inode->i_fop = &asfs_dir_operations;
++		inode->i_mode |= S_IFDIR | ((inode->i_mode & 0400) ? 0100 : 0) | 
++		              ((inode->i_mode & 0040) ? 0010 : 0) | ((inode->i_mode & 0004) ? 0001 : 0);
++		ASFS_INODE->firstblock = obj->object.dir.firstdirblock;
++		ASFS_INODE->hashtable = obj->object.dir.hashtable;
++	} else if (obj->bits & OTYPE_LINK && !(obj->bits & OTYPE_HARDLINK)) {
++		asfs_debug("symlink\n");
++		inode->i_size = 0;
++		inode->i_op = &page_symlink_inode_operations;
++		inode->i_mapping->a_ops = &asfs_symlink_aops;
++		inode->i_mode |= S_IFLNK | S_IRWXUGO;
++		ASFS_INODE->firstblock = obj->object.file.data;
++	} else {
++		asfs_debug("file (Size: %u, FirstBlock: %u)\n", obj->object.file.size, obj->object.file.data);
++
++		inode->i_size = obj->object.file.size;
++		inode->i_blocks = (obj->object.file.size + sb->s_blocksize - 1) >> sb->s_blocksize_bits;
++		inode->i_fop = &asfs_file_operations;
++		inode->i_mapping->a_ops = &asfs_aops;
++		inode->i_mode |= S_IFREG;
++		ASFS_INODE->firstblock = obj->object.file.data;
++		ASFS_INODE->ext_cache.startblock = 0;
++		ASFS_INODE->ext_cache.key = 0;
++	}
++	return;	
++}
++
++static struct super_operations asfs_ops = {
++	.read_inode2	= asfs_read_inode2,
++	.put_super		= asfs_put_super,
++	.statfs		= asfs_statfs,
++};
++
++static DECLARE_FSTYPE_DEV(asfs_fs_type, "asfs", asfs_read_super);
++
++static int __init init_asfs_fs(void)
++{
++	return register_filesystem(&asfs_fs_type);
++}
++
++static void __exit exit_asfs_fs(void)
++{
++	unregister_filesystem(&asfs_fs_type);
++}
++
++/* Yes, works even as a module... :) */
++
++EXPORT_NO_SYMBOLS;
++MODULE_DESCRIPTION("Amiga Smart File System support for Linux v0.6 (04.09.2003)");
++MODULE_LICENSE("GPL");
++
++module_init(init_asfs_fs)
++module_exit(exit_asfs_fs)
+diff -urN linux-2.4.22-ppc/fs/asfs/Makefile linux-2.4.22-pegasos/fs/asfs/Makefile
+--- linux-2.4.22-ppc/fs/asfs/Makefile	1970-01-01 01:00:00.000000000 +0100
++++ linux-2.4.22-pegasos/fs/asfs/Makefile	2003-09-05 12:26:40.000000000 +0200
+@@ -0,0 +1,15 @@
++#
++# Makefile for the linux asfs filesystem routines.
++#
++# Note! Dependencies are done automagically by 'make dep', which also
++# removes any old dependencies. DON'T put your own dependencies here
++# unless it's something special (not a .c file).
++#
++# Note 2! The CFLAGS definitions are now in the main makefile.
++
++O_TARGET := asfs.o
++
++obj-y  := inode.o
++obj-m  := $(O_TARGET)
++
++include $(TOPDIR)/Rules.make
+diff -urN linux-2.4.22-ppc/fs/Config.in linux-2.4.22-pegasos/fs/Config.in
+--- linux-2.4.22-ppc/fs/Config.in	2003-08-26 15:17:29.000000000 +0200
++++ linux-2.4.22-pegasos/fs/Config.in	2003-09-05 12:27:56.000000000 +0200
+@@ -19,6 +19,8 @@
+ 
+ dep_tristate 'Amiga FFS file system support (EXPERIMENTAL)' CONFIG_AFFS_FS $CONFIG_EXPERIMENTAL
+ 
++dep_tristate 'Amiga SFS file system support (read-only) (EXPERIMENTAL)' CONFIG_ASFS_FS $CONFIG_EXPERIMENTAL
++
+ dep_tristate 'Apple HFS file system support (EXPERIMENTAL)' CONFIG_HFS_FS $CONFIG_EXPERIMENTAL
+ 
+ dep_tristate 'Apple HFS+ (Extended HFS) file system support (EXPERIMENTAL)' CONFIG_HFSPLUS_FS $CONFIG_EXPERIMENTAL
+diff -urN linux-2.4.22-ppc/fs/Makefile linux-2.4.22-pegasos/fs/Makefile
+--- linux-2.4.22-ppc/fs/Makefile	2003-08-26 15:16:24.000000000 +0200
++++ linux-2.4.22-pegasos/fs/Makefile	2003-09-05 12:26:40.000000000 +0200
+@@ -55,6 +55,7 @@
+ subdir-$(CONFIG_JFFS_FS)	+= jffs
+ subdir-$(CONFIG_JFFS2_FS)	+= jffs2
+ subdir-$(CONFIG_AFFS_FS)	+= affs
++subdir-$(CONFIG_ASFS_FS)	+= asfs
+ subdir-$(CONFIG_ROMFS_FS)	+= romfs
+ subdir-$(CONFIG_QNX4FS_FS)	+= qnx4
+ subdir-$(CONFIG_UDF_FS)		+= udf
+diff -urN linux-2.4.22-ppc/include/linux/asfs_fs.h linux-2.4.22-pegasos/include/linux/asfs_fs.h
+--- linux-2.4.22-ppc/include/linux/asfs_fs.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-2.4.22-pegasos/include/linux/asfs_fs.h	2003-09-11 11:12:34.000000000 +0200
+@@ -0,0 +1,213 @@
++#ifndef __LINUX_ASFS_FS_H
++#define __LINUX_ASFS_FS_H
++
++#include <linux/types.h>
++#include <asm/byteorder.h>
++
++#define asfs_debug(fmt,arg...) pr_debug(fmt,##arg)
++//#define asfs_debug(fmt,arg...) printk(fmt,##arg)
++
++/* some helper macros... */
++
++#define from32be(t) ((t)=be32_to_cpu(t))
++#define from16be(t) ((t)=be16_to_cpu(t))
++
++#define ASFS_MAKE_ID(a,b,c,d) (((a)&0xff)<<24|((b)&0xff)<<16|((c)&0xff)<<8|((d)&0xff))
++
++/* Amiga SFS block IDs */
++
++#define ASFS_ROOTID	ASFS_MAKE_ID('S','F','S','\0')
++#define ASFS_OBJECTCONTAINER_ID	ASFS_MAKE_ID('O','B','J','C')
++#define ASFS_BNODECONTAINER_ID	ASFS_MAKE_ID('B','N','D','C')
++#define ASFS_NODECONTAINER_ID	ASFS_MAKE_ID('N','D','C',' ')
++#define ASFS_HASHTABLE_ID	ASFS_MAKE_ID('H','T','A','B')
++#define ASFS_SOFTLINK_ID	ASFS_MAKE_ID('S','L','N','K')
++
++/* Amiga SFS defines */
++
++#define ASFS_MAGIC 0xa0ff
++#define ASFS_MAXFN 105
++
++#define ASFS_DEFAULT_UID 0 
++#define ASFS_DEFAULT_GID 0
++#define ASFS_DEFAULT_MODE 0444 /* default permission bits for files, dirs have same permission, but with "x" set */ 
++
++#define ASFS_STRUCTURE_VERISON (3)
++
++#define ASFS_BLCKFACCURACY	(5)
++
++#define ASFS_ROOTBITS_CASESENSITIVE (128)
++
++#define OTYPE_HIDDEN      (1)
++#define OTYPE_HARDLINK    (32)
++#define OTYPE_LINK        (64)
++#define OTYPE_DIR         (128)
++
++#define MSB_MASK (1ul << 31)
++
++/* Each block has its own header with checksum and id, its called fsBlockHeader */
++
++struct fsBlockHeader {
++  u32 id;         /* 4 character id string of this block */
++  u32 checksum;   /* The checksum */
++  u32  ownblock;   /* The blocknumber of the block this block is stored at */
++};
++
++/* On-disk "super block", called fsRootBlock */
++
++struct fsRootBlock {
++  struct fsBlockHeader bheader;
++
++  u16 version;              /* Version number of the filesystem block structure */
++  u16 sequencenumber;       /* The Root with the highest sequencenumber is valid */
++
++  u32 datecreated;          /* Creation date (when first formatted).  Cannot be changed. */
++  u8 bits;                 /* various settings, see defines below. */
++  u8 pad1;
++  u16 pad2;
++
++  u32 reserved1[2];
++
++  u32 firstbyteh;           /* The first byte of our partition from the start of the */
++  u32 firstbyte;            /* disk.  firstbyteh = upper 32 bits, firstbyte = lower 32 bits. */
++
++  u32 lastbyteh;            /* The last byte of our partition, excluding this one. */
++  u32 lastbyte;
++
++  u32  totalblocks;          /* size of this partition in blocks */
++  u32 blocksize;            /* blocksize used */
++
++  u32 reserved2[2];
++  u32 reserved3[8];
++
++  u32  bitmapbase;           /* location of the bitmap */
++  u32  adminspacecontainer;  /* location of first adminspace container */
++  u32  rootobjectcontainer;  /* location of the root objectcontainer */
++  u32  extentbnoderoot;      /* location of the root of the extentbnode B-tree */
++  u32  objectnoderoot;       /* location of the root of the objectnode tree */
++
++  u32 reserved4[3];
++};
++
++/* On disk inode, called fsObject */
++
++struct fsObject {
++  u16 owneruid;
++  u16 ownergid;
++  u32  objectnode;
++  u32 protection;
++
++  union {
++    struct {
++      u32  data;
++      u32 size;
++    } file;
++
++    struct {
++      u32  hashtable;   /* for directories & root, 0 means no hashblock */
++      u32  firstdirblock;
++    } dir;
++  } object;
++
++  u32 datemodified;
++  u8 bits;
++
++  u8 name[0];
++  u8 comment[0];
++};
++
++/* On disk block containging a number of fsObjects */
++
++struct fsObjectContainer {
++  struct fsBlockHeader bheader;
++
++  u32 parent;
++  u32 next;
++  u32 previous;   /* 0 for the first block in the directory chain */
++
++  struct fsObject object[0];
++};
++
++/* BTree structures, used to collect file data position on disk */
++
++struct fsExtentBNode {
++  u32 key;     /* data! */
++  u32 next;
++  u32 prev;
++  u16 blocks;  /* The size in blocks of the region this Extent controls */
++};
++
++struct BNode {
++  u32 key;
++  u32 data;
++};
++
++struct BTreeContainer {
++  u16 nodecount;
++  u8 isleaf;
++  u8 nodesize;   /* Must be a multiple of 2 */
++
++  struct BNode bnode[0];
++};
++
++/* On disk block with BTreeContainer */
++
++struct fsBNodeContainer {
++  struct fsBlockHeader bheader;
++  struct BTreeContainer btc;
++};
++
++/* On disk block  with soft link data */
++
++struct fsSoftLink {
++	struct fsBlockHeader bheader;
++	u32 parent;
++	u32 next;
++	u32 previous;
++	u8 string[0];
++};
++
++/* */
++
++struct fsHashTable {
++  struct fsBlockHeader bheader;
++  u32 parent;
++  u32 hashentry[0];
++};
++
++/* On disk block with node index and some helper structures */
++
++struct fsNodeContainer {
++	struct fsBlockHeader bheader;
++	u32 nodenumber;
++	u32 nodes;
++	u32 node[0];
++};
++
++struct fsNode {
++	u32 data;
++};
++
++struct fsObjectNode {
++	struct fsNode node;
++	u32 next;
++	u16 hash16;
++}
++__attribute__((packed));
++
++/* Extent structure located in RAM (e.g. inside inode structure), 
++   currently used to store last used extent */
++
++struct inramExtent {
++	u32 startblock;	/* Block from begginig of the file */
++	u32 key;
++	u32 next;
++	u16 blocks;
++};
++
++#ifdef __KERNEL__
++
++/* Not much now */
++
++#endif /* __KERNEL__ */
++#endif
+diff -urN linux-2.4.22-ppc/include/linux/asfs_fs_i.h linux-2.4.22-pegasos/include/linux/asfs_fs_i.h
+--- linux-2.4.22-ppc/include/linux/asfs_fs_i.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-2.4.22-pegasos/include/linux/asfs_fs_i.h	2003-09-11 11:12:34.000000000 +0200
+@@ -0,0 +1,16 @@
++#ifndef __ASFS_FS_I
++#define __ASFS_FS_I
++
++#include <linux/asfs_fs.h>
++
++/* inode in-kernel data */
++
++struct asfs_inode_info {
++	u32 firstblock;
++	u32 hashtable;
++	struct inramExtent ext_cache;
++};
++
++#define ASFS_INODE	(&inode->u.asfs_i)
++#define ASFS_DIR	(&dir->u.asfs_i)
++#endif
+diff -urN linux-2.4.22-ppc/include/linux/asfs_fs_sb.h linux-2.4.22-pegasos/include/linux/asfs_fs_sb.h
+--- linux-2.4.22-ppc/include/linux/asfs_fs_sb.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-2.4.22-pegasos/include/linux/asfs_fs_sb.h	2003-09-05 12:26:40.000000000 +0200
+@@ -0,0 +1,20 @@
++#ifndef __ASFS_FS_SB
++#define __ASFS_FS_SB
++
++/* Amiga SFS superblock in-core data */
++
++struct asfs_sb_info {
++	u32 totalblocks;
++	u32 rootobjectcontainer;
++	u32 extentbnoderoot;
++	u32 objectnoderoot;
++	uid_t uid;
++	gid_t gid;
++	umode_t mode;
++	char *prefix;
++	u8 flags;
++};
++
++#define ASFS_SB	(&sb->u.asfs_sb)
++
++#endif
+diff -urN linux-2.4.22-ppc/include/linux/fs.h linux-2.4.22-pegasos/include/linux/fs.h
+--- linux-2.4.22-ppc/include/linux/fs.h	2003-08-26 15:16:32.000000000 +0200
++++ linux-2.4.22-pegasos/include/linux/fs.h	2003-09-11 11:12:34.000000000 +0200
+@@ -305,6 +305,7 @@
+ #include <linux/nfs_fs_i.h>
+ #include <linux/sysv_fs_i.h>
+ #include <linux/affs_fs_i.h>
++#include <linux/asfs_fs_i.h>
+ #include <linux/ufs_fs_i.h>
+ #include <linux/efs_fs_i.h>
+ #include <linux/coda_fs_i.h>
+@@ -500,6 +501,7 @@
+ 		struct nfs_inode_info		nfs_i;
+ 		struct sysv_inode_info		sysv_i;
+ 		struct affs_inode_info		affs_i;
++		struct asfs_inode_info		asfs_i;
+ 		struct ufs_inode_info		ufs_i;
+ 		struct efs_inode_info		efs_i;
+ 		struct romfs_inode_info		romfs_i;
+@@ -717,6 +719,7 @@
+ #include <linux/nfs_fs_sb.h>
+ #include <linux/sysv_fs_sb.h>
+ #include <linux/affs_fs_sb.h>
++#include <linux/asfs_fs_sb.h>
+ #include <linux/ufs_fs_sb.h>
+ #include <linux/efs_fs_sb.h>
+ #include <linux/romfs_fs_sb.h>
+@@ -775,6 +778,7 @@
+ 		struct nfs_sb_info	nfs_sb;
+ 		struct sysv_sb_info	sysv_sb;
+ 		struct affs_sb_info	affs_sb;
++		struct asfs_sb_info	asfs_sb;
+ 		struct ufs_sb_info	ufs_sb;
+ 		struct efs_sb_info	efs_sb;
+ 		struct shmem_sb_info	shmem_sb;

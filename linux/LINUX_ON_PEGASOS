@@ -1,0 +1,137 @@
+Linux on pegasos status overview
+--------------------------------
+
+There are three kinds of Linux support listed in the text below. Native
+installers, image installers and live CDs. I will quickly give an explaination
+of what is meant by these three terms.
+
+  The native installer is support for the Pegasos from the installer of a
+  given distribution. It makes it possible to install Linux for the Pegasos in
+  a customized way, and may need more or less user intervention, depending on
+  distribution used. The advantage is that you get to fully customize your
+  installation the way you like, the disadvantage is that more work is needed.
+
+  The image installer is used to install an already configured distribution.
+  This is easier than a full custom installation, but you are saddled with the
+  choices made by the image builder, and customization of the image is not
+  really possible or rather restricted. The work done by the image_installer
+  project should allow more customization.
+
+  Live CDs are a CD containing an image, like the one used for the image
+  installers, but which can be run directly from the CD, without needing to
+  install anything on the harddisk. It is cool for unintrusive testing and for
+  people without a lot of harddisk space. They have the same customization
+  problems as the installed images though, even a bit worse, since the
+  customization needs to be redone each time. They usually sport advanced
+  hardware recognition to compensate for this.
+
+0) Generic Linux stuff
+
+  The main site for my Linux kernel work can be found on :
+
+  http://people.debian.org/~luther/pegasos
+
+  There is also an alioth project :
+
+  http://alioth.debian.org/projects/pegasos/
+
+  But it is currently not used.
+
+  The people.debian.org address is also mirrored on the Genesi ftp site at :
+
+  ftp://zargos.morphos.net/linux/2.4.22 (needing login/password though)
+
+  And on :
+
+  http://www.pegasos.co.nz/linux
+
+  Current situation is that kernel 2.4.22 works fine on Pegasos, with a small
+  patch available at the first site, which should for the most part be
+  integrated into 2.4.23. Work on 2.6.0 test kernels has not begun, but it
+  should be quick once there is a successful report on another powerpc
+  subarch.
+
+1) Debian Woody
+
+  Debian Woody uses the so-called debian boot-floppies as installer, they are
+  not really floppies, since it is possible to install them from a CD-ROM or
+  from the net. Furthermore the floppy install method on Pegasos is not
+  really all that useful, since the root.bin is too big, and the Pegasos OF
+  cannot boot from the floppy disk anyway. Installation has been tested from
+  both the network and from the official woody CD set (7 binary CDs).
+
+  http://people.debian.org/~luther/pegasos
+  http://www.debian.org
+
+  The boot floppies installer comes localised in various languages. Currently
+  built-in and translated languages are : en pt de pl fr es ja sv
+
+2) Debian Sarge
+
+  Debian Sarge, which is not yet released, will use the new debian-installer,
+  which is not yet finished. I have a booting kernel+initrd image, but there
+  is still much work to be done before it is functional.
+
+  http://people.debian.org/~luther/pegasos
+  http://www.debian.org
+
+3) PegXLin
+
+  PegXLin is a one CD installed image of debian/woody. It uses part of the
+  debian/woody installer, but then uses an installer script that copies the
+  pegxlin pre-installed image to the disk.
+
+  http://uk.geocities.com/david260179/  
+
+4) Image_installer
+
+  Image_installer is similar in concept to the PegXLin. It currently supports
+  a Mandrake 9.1 image, work on a YellowDog image is underway and PegXLin is
+  also planned, maybe it will even come to a merging of these two concepts.
+  Gentoo and Suze were also rumored to be planned in the future.
+  Image_installer for Mandrake 9.1 has also some Pegasos specific kernel
+  modules and maybe XFree86 driver configuration.
+
+  http://www.phinixi.com/~mheider/ (most uptodate)
+  http://www.amiga-linux.de.vu/
+
+5) Gentoo
+
+  Gentoo is a source distribution, it is distinct from the other distributions
+  in that you have to recompile everything yourself.
+  Gentoo doesn't support the Pegasos natively yet, but you will work with the
+  stuff available at :
+
+  http://dev.gentoo.org/~dholm/ppc.html
+
+  When they release 2.4.22 kernel sources, it will come with support for the
+  Pegasos, using the same patches as i have.
+
+  http://www.gentoo.org/
+  
+  There is also a Gentoo Live CD available for powerpc.
+
+  http://www.gentoo.org/doc/en/gentoo-ppc-install.xml
+  http://ds.thn.htu.se/linux/gentoo/releases/ppc/1.4/livecd
+
+  The live CD won't boot on pegasos without the above mentioned pegasos
+  kernel, but this may change in the future. The recomended isos would be the
+  livecd-g3-grp-1.4-cd1.iso, or the cd2 if you don't want to rebuild
+  everything, as the cd2 contains pre-built binaries for the g3. [but then, you
+  could as well use a binary distro, like debian. Sven@debian speaking :)))]
+
+6) Zynot
+
+  <I have no information on it>
+
+  http://www.zynot.org/
+
+7) Debian/Knoppix ppc Live CD.
+
+  There is also a Debian/Knoppix Live CD available for Powerpc. This is the
+  one that Nicholas Blachford spoke about in his LinuxTag report, altough it
+  does only contain a powermac kernel right now. I suppose it should work fine
+  with a Pegasos-aware kernel like the vmlinuz-2.4.22, not sure though.
+
+  http://mailman.linuxtag.org/pipermail/debian-knoppix/2003-July/003428.html
+  http://debian.tu-bs.de/knoppix/powerPC/

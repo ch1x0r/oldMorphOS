@@ -1,0 +1,117 @@
+MorphOS Boot CD
+---------------
+$VER: MorphOS.readme 1.4 (7.8.2003)
+
+
+Graphic cards supported:
+------------------------
+- Radeon7000/7200/7500/8500/9000/9100
+- Voodoo3/4/5
+- SiS6326, SiS305
+- Permedia2/Permedia2v
+
+
+Booting:
+--------
+- turn on your Pegasos :)
+- insert the CD
+- at the openfirmware prompt, type: boot /pci/cd boot.img
+- after a while you should get the Ambient screen
+
+Note: if your firmware doesn't recognize your cdrom (use show-devs to find
+out), try to use another cdrom drive or wait for the next update.
+
+
+Installing:
+-----------
+It's quite crude for now but basically, go to 'Tools' and run
+SCSIConfig. Create one or more partitions (FFS and SFS are supported
+natively), use a mask of 0xfffffffe (for now), don't forget to set bootable
+and not bootable flags. If your HD has an MBR, clear it using HDMBRClear in
+the shell. You also need a small FFS partition to put the bootimages
+there (SFS/PFS will be supported in the next firmware update). I suggest
+creating a *non bootable* 50MB FFS partition at the start of the HD (it *must*
+be < 4GB range, will be fixed in the next firmware upgrade).
+
+After that, reboot then use Ambient's format menu to format
+your partitions. Then just double click on the 'hdinstall' icon.
+
+That's it. Reboot and boot using:
+boot /pci/ide/disk@0,0:0 boot.img
+
+
+Upgrading:
+----------
+Boot from the CD (make sure you use the boot.img from the CD by typing boot
+/pci/cd boot.img or so) then double click on the 'hdinstall' icon. The script
+is quite smart and won't overwrite your settings. It's definitely better than
+trying to upgrade by hand.
+
+
+Reporting bugs, suggestions, etc..:
+-----------------------------------
+Mailing-list.
+
+
+FAQ:
+----
+- Q: What is mossys: and sys:morphos ?
+  A: mossys: is an assign pointing to sys:morphos. The idea is that
+  sys:morphos is a private directory for the operating system and you
+  don't need to touch anything in it. A system upgrade will be done by simply
+  putting a new directory (old one can be renamed or so). If you want to change
+  the way the system is started edit s:user-startup, nothing else.
+
+- Q: How do I format a disk ?
+  A: Ambient has a Format menu.
+
+- Q: But I don't see my non formatted disks on the desktop!
+  A: But you'll see them in the Format menu.
+
+- Q: How do I configure the screenmode ?
+  A: Go to 'ModeEdit', chose a proper monitor in the monitor list or create
+  one if you don't find it. Create some new screenmodes, press 'Save'. Reboot.
+  Go to 'ScreenMode' and select them in the listview.
+
+- Q: I can't configure the harddisk, nothing is written to it, I get weird
+  errors.
+  A: Always use 80 pin IDE cables for everything. 40 pin cables are not
+  supported.
+
+- Q: Openfirmware got mad!
+  A: Nah, you probably moved the mouse and it displays event messages. This
+  will be removed later.
+
+- Q: I heard one can have an openfirmware bootmenu by typing some obscure
+  commands and..
+  A: DON'T try to mess around with openfirmware startup scripts or you'll end
+  up with a machine that doesn't boot at all (really). Bootmenus will be
+  provided in a later update.
+
+- Q: I'd like to replace some MorphOS components with 3rd party stuff. How do
+  I do that ?
+  A: First of all, we don't support such configuration. Once you start to
+  replace system stuff you are on your own. Anyway, if you want to replace a
+  library, for example mossys:libs/foobar.library, put your 3rd party
+  foobar.library into libs: (which is sys:libs) and *rename*
+  mossys:libs/foobar.library to mossys:libs/foobar.library_ (you can use any
+  name but appending '_' is handy). The system will then fallback to
+  libs:foobar.library. But you should really refrain from doing that as
+  MorphOS libraries are heavily improved and extended compared to 3rd party
+  stuff.
+
+- Q: Where do I put my 3rd party MUI custom classes ?
+  A: In sys:classes/mui
+
+- Q: When will XYZ work ?
+  A: When it's ready. Please don't ask developers repeatedly when something is
+  ready as it's hard to predict and is being worked on most of the time
+  anyway.
+
+- Q: Where is the TCP/IP? Sheep? Goats?
+  A: Not everything is packaged and finalized yet. It will be there when it's
+  ready and tested well enough.
+
+- Q: Why doesn't ARexx work ?
+  A: Because CISC wastes all his time in front of his DVD Player.
+

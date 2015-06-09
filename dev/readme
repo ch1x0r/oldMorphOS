@@ -1,0 +1,130 @@
+
+	Installation:
+	-------------
+
+
+1) If you don't have a GeekGadget environment:
+
+Make a GeekGadget directory somewhere, and assign GG: to it.
+
+   1> makedir some_volume:GeekGadgets
+   1> assign GG: some_volume:GeekGadgets
+
+Make a GG:bin directory, and add it to your path, or add it to
+your c: assign.
+
+   1> makedir GG:bin
+   1> path GG:bin add
+
+
+2) CD to that directory and unarchive all archives there.
+
+
+   1> cd GG:
+   1> tar xzf some_dir/binutils-2.9.1-bin.tgz
+   1> tar xzf some_dir/gcc-2.95.3-bin.tgz
+   1> tar xzf some_dir/morphossdk.tgz
+
+
+3) Fix protection bits if they aren't extracted properly:
+
+   1> protect bin/* rwedp
+   1> protect lib/gcc-lib/ppc-morphos/2.95.3/cc1 rwedp
+   1> protect lib/gcc-lib/ppc-morphos/2.95.3/cc1plus rwedp
+   1> protect lib/gcc-lib/ppc-morphos/2.95.3/collect2 rwedp
+   1> protect lib/gcc-lib/ppc-morphos/2.95.3/cpp0 rwedp
+
+
+3) Create some links, if they were not correctly extracted from the archives:
+
+   1> makelink gg:ppc-morphos/bin/as gg:bin/as
+   1> makelink gg:ppc-morphos/bin/ar gg:bin/ar
+   1> makelink gg:ppc-morphos/bin/ld gg:bin/ld
+   1> makelink gg:ppc-morphos/bin/nm gg:bin/nm
+   1> makelink gg:ppc-morphos/bin/ranlib gg:bin/ranlib
+   1> makelink gg:ppc-morphos/bin/strip gg:bin/strip
+   1> makelink gg:lib/gcc-lib/ppc-morphos/2.95.3/libstdc++.a gg:ppc-morphos/lib/libstdc++.a.2.10.0
+   1> makelink gg:lib/gcc-lib/ppc-morphos/2.95.3/libb32/libstdc++.a gg:ppc-morphos/lib/libb32/libstdc++.a.2.10.0
+
+
+
+
+	Usage:
+	------
+
+To compile 'hello.c' to 'hello' using ixemul (for unix ports):
+
+   1> gcc -o hello hello.c
+
+To compile 'hello.c' to 'hello' using libnix (for programs using system
+libraries directly):
+
+   1> gcc -noixemul -o hello hello.c
+
+To strip debugging informations and symbols from an executable file:
+
+   1> strip hello
+
+To compile and link separately:
+
+   1> gcc -c hello1.c
+   1> gcc -c hello2.c
+   1> gcc -o hello hello1.o hello2.o
+
+
+* Some useful options:
+
+   -O, -O2, -O3 to optimize (-O3 make files bigger, be careful, usually, you
+don't want to compile anything without at least -O with gcc. Recommanded is -O2.)
+
+   -mcpu=604e, -mcpu=603e to optimize for a cpu. Files optimized
+for one processor still work on others.
+
+   -mmultiple allows using ppc's 'lmw' and 'stmw' instructions,
+which make the executable smaller.
+
+   -mbaserel32 to use r13-relative data addressing
+
+   -mresident32 to build 'pure' executables
+
+   -mstackcheck to add stack checking (ixemul only).
+
+   -mstackextend to add automatic stack extension (ixemul only).
+
+   -v to view the exact commands executed by gcc, and its include
+search path. Useful to find out installation problems.
+
+   -I/somedev/somedir to add somedev:somedir to the include search path.
+
+   -Dsymbol or -Dsymbol=value to add defines from the command line.
+
+
+* Predefined symbols:
+
+__PPC__, __powerpc__, __MORPHOS__
+
+__603e__ if compiled with -mcpu=603e
+__604e__ if compiled with -mcpu=604e
+
+__amigaos__, amigaos, amiga, AMIGA, MCH_AMIGA for compatibility
+
+
+
+
+	Notes:
+	------
+
+The executables in the archives are pure, and can be made resident, to speed up compilation:
+
+  1> resident gg:bin/gcc defer
+  1> resident gg:bin/as defer
+  1> resident gg:bin/ld defer
+  1> resident gg:lib/gcc-lib/ppc-morphos/2.95.3/cc1 defer
+  1> resident gg:lib/gcc-lib/ppc-morphos/2.95.3/cc1plus defer
+  1> resident gg:lib/gcc-lib/ppc-morphos/2.95.3/cpp0 defer
+  1> resident gg:lib/gcc-lib/ppc-morphos/2.95.3/collect2 defer
+
+Make sure that the partition on which your includes are has enough buffers, otherwise things
+will get slow.
+
+
